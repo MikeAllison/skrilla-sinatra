@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col">
+    <h3>Accounts</h3>
+  </div>
+</div>
+
+<div class="row">
+  <% @accounts.each do |account| %>
+    <div class="col-sm-1 col-md-4">
+      <div class="card text-white bg-dark" style="margin-bottom: .5rem;">
+        <div class="card-header"><h5><%= account.name %></h5></div>
+        <div class="card-body">
+          Balance: $<%= account.balance %>
+        </div>
+        <div class="card-footer">
+          <a href="accounts/<%= account.url_safe_name %>/transactions" class="btn btn-sm btn-outline-light">View</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

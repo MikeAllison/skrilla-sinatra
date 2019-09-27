@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col">
+    <h3><%= @account.name %> - Transactions</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Merchant</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <tr>
+            <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
+            <td><%= transaction.merchant.name %></td>
+            <td>$<%= transaction.amount %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="3" class="text-right"><h5>Balance: $<%= @account.balance %></h5></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

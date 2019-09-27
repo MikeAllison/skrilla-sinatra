@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skrilla</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+      body { font-family: Arial, sans-serif; !important }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <% if @logged_in_user %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Skrilla</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts">Accounts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/settings">Settings</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <% end %>
+    <!-- Navbar End -->
+    <!-- Main Content -->
+    <div class="container" style="margin-top: 2rem;">
+      <%= yield %>
+      <!-- Modal -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel"><%= session[:message][:heading] if session[:message] %></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= session[:message][:body] if session[:message] %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal End -->
+    </div>
+    <!-- Main Content End -->
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <% if session[:message] %>
+      <script type="text/javascript">
+        $(function() {
+          $('#modal').modal('show');
+        });
+        <% session[:message] = nil %>
+      </script>
+    <% end %>
+  </body>
+</html>
