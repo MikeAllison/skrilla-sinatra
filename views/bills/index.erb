@@ -22,10 +22,10 @@
             <td>To-Do</td>
             <td>To-Do</td>
             <td><%= bill.description %></td>
-            <td><%= bill.frequency.capitalize %></td>
+            <td><%= bill.bill_frequency.name %></td>
             <td>
               <a href="#" class="btn btn-outline-dark btn-sm">Mark As Paid</a>
-              <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
+              <a href="bills/<%= bill.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a>
             </td>
           </tr>
         <% end %>

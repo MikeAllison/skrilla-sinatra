@@ -2,7 +2,8 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/cookies'
 require './classes'
-require 'pry' if ENV['RACK_ENV'] == 'development'
+require 'pry'
+#require 'pry' if ENV['RACK_ENV'] == 'development'
 
 # Load all required files
 Dir["#{Dir.pwd}/models/*.rb"].each { |file| require file }
@@ -72,6 +73,15 @@ get '/bills/?' do
   @bills = Bill.all
 
   erb :'bills/index'
+end
+
+get '/bills/:id/edit' do
+  redirect to('/login') unless @logged_in_user
+
+  @bill = Bill.find_by(params[:id])
+  @bill_frequencies = BillFrequency.all
+
+  erb :'bills/edit'
 end
 
 get '/admin/settings/?' do
