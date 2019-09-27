@@ -66,6 +66,14 @@ get '/accounts/:url_safe_name/transactions' do
   erb :'accounts/transactions/index'
 end
 
+get '/bills/?' do
+  redirect to('/login') unless @logged_in_user
+
+  @bills = Bill.all
+
+  erb :'bills/index'
+end
+
 get '/admin/settings/?' do
   halt 403 unless @logged_in_user
 

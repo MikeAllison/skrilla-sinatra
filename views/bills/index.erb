@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col">
+    <h3>Bills</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Next Payment Date</th>
+          <th>Amount</th>
+          <th>Description</th>
+          <th>Frequency</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bills.each do |bill| %>
+          <tr>
+            <td>To-Do</td>
+            <td>To-Do</td>
+            <td><%= bill.description %></td>
+            <td><%= bill.frequency.capitalize %></td>
+            <td>
+              <a href="#" class="btn btn-outline-dark btn-sm">Mark As Paid</a>
+              <a href="#" class="btn btn-outline-dark btn-sm">Edit</a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

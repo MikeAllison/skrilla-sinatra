@@ -20,3 +20,9 @@ Transaction.create(date: '2019-01-02', amount: 0.02, account_id: 2, merchant_id:
 Transaction.create(date: '2019-01-03', amount: -1000.00, account_id: 3, merchant_id: 3)
 Transaction.create(date: '2019-01-01', amount: -3.00, account_id: 3, merchant_id: 4)
 Transaction.create(date: '2019-01-02', amount: -0.03, account_id: 3, merchant_id: 3)
+
+Bill.create(description: "AT&T Wireless", frequency: 4)
+Bill.create(description: "Rent", frequency: 4)
+Bill.create(description: "BOA Credit Card Payment", frequency: 1)
+Bill.create(description: "Band Rent", frequency: 4)
+Bill.create(description: "Brooklyn Museum", frequency: 3)
