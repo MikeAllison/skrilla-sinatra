@@ -12,6 +12,7 @@
           <th scope="col">Date</th>
           <th scope="col">Merchant</th>
           <th scope="col">Amount</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +21,7 @@
             <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
             <td><%= transaction.merchant.name %></td>
             <td>$<%= transaction.amount %></td>
+            <td><a href="transactions/<%= transaction.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a></td>
           </tr>
         <% end %>
         <tr>

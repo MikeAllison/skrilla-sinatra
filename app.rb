@@ -80,6 +80,7 @@ get '/bills/:id/edit' do
 
   @bill = Bill.find_by(params[:id])
   @bill_frequencies = BillFrequency.all
+  @accounts = Account.all
 
   erb :'bills/edit'
 end
