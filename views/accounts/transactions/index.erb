@@ -20,12 +20,18 @@
           <tr>
             <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
             <td><%= transaction.merchant.name %></td>
-            <td>$<%= transaction.amount %></td>
+            <td>
+              <% if transaction.credit? %>
+                <span class="text-success"><%= transaction.to_currency %></span>
+              <% else %>
+                <span class="text-danger"><%= transaction.to_currency %></span>
+              <% end %>
+            </td>
             <td><a href="transactions/<%= transaction.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a></td>
           </tr>
         <% end %>
         <tr>
-          <td colspan="3" class="text-right"><h5>Balance: $<%= @account.balance %></h5></td>
+          <td colspan="4" class="text-right"><h5>Balance: $<%= @account.balance %></h5></td>
         </tr>
       </tbody>
     </table>

@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20190927203207) do
     t.decimal "amount",      precision: 10, scale: 2
     t.integer "account_id"
     t.integer "merchant_id"
+    t.boolean "credit"
   end
 
   create_table "users", force: :cascade do |t|
