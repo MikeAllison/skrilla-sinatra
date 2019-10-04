@@ -22,16 +22,19 @@
             <td><%= transaction.merchant.name %></td>
             <td>
               <% if transaction.credit? %>
-                <span class="text-success"><%= to_currency(transaction.amount) %></span>
+                <span class="text-success">$<%= to_currency(transaction.amount) %></span>
               <% else %>
-                <span class="text-danger"><%= to_currency(transaction.amount) %></span>
+                <span class="text-danger">$<%= to_currency(transaction.amount) %></span>
               <% end %>
             </td>
-            <td><a href="transactions/<%= transaction.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a></td>
+            <td>
+              <a href="transactions/<%= transaction.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a>
+              <a href="transactions/<%= transaction.id %>/delete" class="btn btn-outline-dark btn-sm">Delete</a>
+            </td>
           </tr>
         <% end %>
         <tr>
-          <td colspan="4" class="text-right"><h5>Balance: <%= to_currency(@account.balance) %></h5></td>
+          <td colspan="4" class="text-right"><h5>Balance: $<%= to_currency(@account.balance) %></h5></td>
         </tr>
       </tbody>
     </table>

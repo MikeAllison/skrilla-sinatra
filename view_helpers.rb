@@ -1,9 +1,9 @@
 helpers do
   def to_currency(amount)
     if amount.to_s.match(/\.\d\z/)
-      "$#{amount}0"
+      "#{amount}0"
     else
-      "$#{amount}"
+      "#{amount}"
     end
   end
 end
