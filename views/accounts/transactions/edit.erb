@@ -34,3 +34,10 @@
     </form>
   </div>
 </div>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $('option[value|=<%= @transaction.account_id %>]').attr('selected', 'selected');
+  });
+</script>
