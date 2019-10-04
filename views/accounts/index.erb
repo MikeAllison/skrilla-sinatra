@@ -10,7 +10,7 @@
       <div class="card text-white bg-dark" style="margin-bottom: .5rem;">
         <div class="card-header"><h5><%= account.name %></h5></div>
         <div class="card-body">
-          Balance: $<%= account.balance %>
+          Balance: <%= to_currency(account.balance) %>
         </div>
         <div class="card-footer">
           <a href="accounts/<%= account.url_safe_name %>/transactions" class="btn btn-sm btn-outline-light">View</a>

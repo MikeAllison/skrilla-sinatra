@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/cookies'
 require './classes'
+require './view_helpers'
 require 'pry'
 #require 'pry' if ENV['RACK_ENV'] == 'development'
 

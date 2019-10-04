@@ -8,11 +8,11 @@ class Transaction < ActiveRecord::Base
   validates_presence_of :merchant_id
   validates_inclusion_of :credit, in: [true, false]
 
-  def to_currency
-    if self.amount.to_s.match(/\.\d\z/)
-      "$#{self.amount}0"
-    else
-      "$#{self.amount}"
-    end
+  def credit?
+    self.credit ? true : false
+  end
+
+  def debit?
+    self.credit ? false : true
   end
 end

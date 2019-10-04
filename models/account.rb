@@ -11,9 +11,14 @@ class Account < ActiveRecord::Base
 
   def balance
     total = 0
-    Transaction.where(account_id: self.id).each do |t|
-      total += t.amount
+
+    transactions = Transaction.where(account_id: self.id)
+
+    transactions.each do |t|
+      total += t.amount if t.credit?
+      total -= t.amount if t.debit?
     end
+
     total
   end
 end
