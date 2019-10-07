@@ -37,7 +37,7 @@ post '/login' do
   if user && user.authenticate(params[:password])
     token = User.generate_random_token
     user.save_persistence_token(token)
-    response.set_cookie(:p_token, value: token, expires: 1.month.from_now)
+    response.set_cookie(:p_token, value: token, expires: 1.day.from_now)
     @logged_in_user = User.find_by_token(token)
     redirect to('/accounts')
   else
