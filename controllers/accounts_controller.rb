@@ -28,6 +28,7 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
   # TO-DO: Save record
+  @transaction = Transaction.find_by(id: params[:id])
 
   redirect to("/accounts/#{params[:url_safe_name]}/transactions")
 end
