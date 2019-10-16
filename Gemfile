@@ -17,4 +17,5 @@ group :development do
   gem 'rerun'
   gem 'sqlite3', '~> 1.3.6'
   gem 'pry'
+  gem 'byebug'
 end
