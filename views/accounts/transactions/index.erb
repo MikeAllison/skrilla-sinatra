@@ -19,7 +19,7 @@
         <% @transactions.each do |transaction| %>
           <tr>
             <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
-            <td><%= transaction.merchant.name %></td>
+            <td><%= transaction.merchant %></td>
             <td>
               <% if transaction.credit? %>
                 <span class="text-success">$<%= to_currency(transaction.amount) %></span>

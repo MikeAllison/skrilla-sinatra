@@ -27,23 +27,21 @@ end
 post '/accounts/:url_safe_name/transactions/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
+  #TODO - MOVE ELSEWHERE
   params.each do |param|
     param[1].strip!
   end
 
-  @transaction = Transaction.find_by(id: params[:id])
+  transaction = Transaction.find_by(id: params[:id])
 
-  unless params[:merchant].empty?
-    merchant = Merchant.find_by(name: params[:merchant])
-    merchant = params[:merchant] if merchant.nil?
-  end
+  transaction.merchant = params[:merchant].empty? ? transaction.merchant : params[:merchant]
+  transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
+  transaction.credit = params[:credit]
+  transaction.account_id = params[:account]
+  transaction.date = params[:date]
 
-  amount = params[:amount] unless params[:amount].empty?
-  credit = params[:credit]
-  account = Account.find_by(id: params[:account]) unless params[:account].empty?
-  date = params[:date] unless params[:date].empty?
-
-  byebug
+  # TEST
+  transaction.update!
 
   redirect to("/accounts/#{params[:url_safe_name]}/transactions")
 end

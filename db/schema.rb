@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190927203207) do
+ActiveRecord::Schema.define(version: 20191017162638) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -27,15 +27,11 @@ ActiveRecord::Schema.define(version: 20190927203207) do
     t.integer "bill_frequency_id"
   end
 
-  create_table "merchants", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "transactions", force: :cascade do |t|
+    t.string  "merchant"
     t.date    "date"
-    t.decimal "amount",      precision: 10, scale: 2
+    t.decimal "amount",     precision: 10, scale: 2
     t.integer "account_id"
-    t.integer "merchant_id"
     t.boolean "credit"
   end
 
