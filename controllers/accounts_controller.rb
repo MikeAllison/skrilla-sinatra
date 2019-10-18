@@ -36,12 +36,14 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
 
   transaction.merchant = params[:merchant].empty? ? transaction.merchant : params[:merchant]
   transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
-  transaction.credit = params[:credit]
+  transaction.credit = params[:credit] == "on" ? true : false
   transaction.account_id = params[:account]
   transaction.date = params[:date]
 
-  # TEST
-  transaction.update!
-
-  redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  if transaction.save
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  else
+    session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions/#{params[:id]}/edit")
+  end
 end
