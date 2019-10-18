@@ -21,13 +21,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/accounts">Accounts</a>
+              <a class="nav-link <%= 'active' if request.path.match(/\A\/accounts/) %>" href="/accounts">Accounts</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/bills">Bills</a>
+              <a class="nav-link <%= 'active' if request.path.match(/\A\/bills/) %>" href="/bills">Bills</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/settings">Settings</a>
+              <a class="nav-link <%= 'active' if request.path.match(/\A\/admin\/settings/) %>" href="/admin/settings">Settings</a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="/logout">Logout</a>
