@@ -27,10 +27,7 @@ end
 post '/accounts/:url_safe_name/transactions/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
-  #TODO - MOVE ELSEWHERE
-  params.each do |param|
-    param[1].strip!
-  end
+  strip_whitespace(params)
 
   transaction = Transaction.find_by(id: params[:id])
 
