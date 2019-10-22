@@ -51,11 +51,16 @@ get '/accounts/:url_safe_name/transactions/:id/delete' do
 
   transaction = Transaction.find_by(id: params[:id])
 
+  if transaction.nil?
+    session[:message] = { :heading => 'Update Failed', :body => 'The transaction could not be found.  Please try again.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  end
+
   if transaction.destroy
     session[:message] = { :heading => 'Success', :body => 'The transaction was deleted.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   else
     session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
-    redirect to("/accounts/#{params[:url_safe_name]}/transactions/#{params[:id]}/edit")
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   end
 end
