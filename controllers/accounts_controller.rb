@@ -38,6 +38,21 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
   transaction.date = params[:date]
 
   if transaction.save
+    session[:message] = { :heading => 'Success', :body => 'Your changes were saved.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  else
+    session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions/#{params[:id]}/edit")
+  end
+end
+
+get '/accounts/:url_safe_name/transactions/:id/delete' do
+  redirect to('/login') unless @logged_in_user
+
+  transaction = Transaction.find_by(id: params[:id])
+
+  if transaction.destroy
+    session[:message] = { :heading => 'Success', :body => 'The transaction was deleted.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   else
     session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
