@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20191017162638) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string "name"
-    t.string "url_safe_name"
+    t.string  "name"
+    t.string  "url_safe_name"
+    t.decimal "starting_balance", precision: 10, scale: 2, default: 0.0
   end
 
   create_table "bill_frequencies", force: :cascade do |t|

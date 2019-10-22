@@ -3,6 +3,7 @@ class Account < ActiveRecord::Base
 
   validates_presence_of :name
   validates :name, uniqueness: true
+  validates_presence_of :starting_balance
 
   before_create do
     self.name.strip!
@@ -10,13 +11,11 @@ class Account < ActiveRecord::Base
   end
 
   def balance
-    total = 0
-
     transactions = Transaction.where(account_id: self.id)
 
     transactions.each do |t|
-      total += t.amount if t.credit?
-      total -= t.amount if t.debit?
+      self.starting_balance += t.amount if t.credit?
+      self.starting_balance -= t.amount if t.debit?
     end
 
     total

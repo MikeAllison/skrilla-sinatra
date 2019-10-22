@@ -3,7 +3,28 @@ get '/accounts/?' do
 
   @accounts = Account.all
 
+  if @accounts.empty?
+    session[:message] = { :heading => 'Error', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
+    redirect to("/accounts/new")
+  end
+
   erb :'accounts/index'
+end
+
+get '/accounts/new' do
+  erb :'accounts/new'
+end
+
+post '/accounts/new' do
+  account = Account.new(name: params[:name], starting_balance: params[:starting_balance])
+
+  if account.save
+    session[:message] = { :heading => 'Success', :body => 'The account was added.' }
+    redirect to("/accounts")
+  else
+    session[:message] = { :heading => 'Error', :body => 'There was a problem adding the account.  Please try again.' }
+    redirect to("/accounts/new")
+  end
 end
 
 get '/accounts/:url_safe_name/transactions' do
@@ -19,6 +40,12 @@ get '/accounts/:url_safe_name/transactions/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
   @transaction = Transaction.find_by(id: params[:id])
+
+  if @transaction.nil?
+    session[:message] = { :heading => 'Error', :body => 'The transaction could not be found.  Please try again.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  end
+
   @accounts = Account.all
 
   erb :'accounts/transactions/edit'
