@@ -19,6 +19,7 @@ post '/accounts/new' do
   account = Account.new(name: params[:name], starting_balance: params[:starting_balance])
 
   if account.save
+    Transaction.create(merchant: 'Starting Balance', date: Date.today, amount: account.starting_balance, account_id: account.id, credit: true)
     session[:message] = { :heading => 'Success', :body => 'The account was added.' }
     redirect to("/accounts")
   else
