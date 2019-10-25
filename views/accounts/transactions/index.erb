@@ -4,6 +4,33 @@
   </div>
 </div>
 
+<div class="row mb-sm-2">
+  <div class="col">
+    <form class="form-inline" method="post">
+      <label class="sr-only" for="date">Date</label>
+      <input type="date" class="form-control mr-sm-2" id="date" name="date">
+
+      <label class="sr-only" for="merchant">Merchant</label>
+      <input type="text" class="form-control mr-sm-2" id="merchant" name="merchant" placeholder="Merchant">
+
+      <label class="sr-only" for="Amount">Amount</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">$</div>
+        </div>
+        <input type="text" class="form-control mr-sm-2" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="0.00">
+      </div>
+
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="credit" name="credit">
+        <label class="custom-control-label mr-sm-2" for="credit">Credit</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-dark">Submit</button>
+    </form>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
     <table class="table table-sm">

@@ -6,7 +6,7 @@
       </thead>
       <tbody>
         <% @db_stats.each do |name, value| %>
-          <tr <%= 'class="bg-info"' if name == :"Total Rows" %>><td><%= name %></td><td class="text-right"><%= value %></td></tr>
+          <tr><td><%= name %></td><td class="text-right"><%= value %></td></tr>
         <% end %>
       </tbody>
     </table>
