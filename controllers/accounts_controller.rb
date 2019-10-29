@@ -4,7 +4,7 @@ get '/accounts/?' do
   @accounts = Account.all
 
   if @accounts.empty?
-    session[:message] = { :heading => 'Error', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
+    session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
     redirect to("/accounts/new")
   end
 

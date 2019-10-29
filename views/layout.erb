@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -18,8 +17,7 @@
           <a href="/bills" class="item <%= 'active' if request.path.match(/\A\/bills/) %>">Bills</a>
           <a href="/logout" class="item">Logout</a>
         </div>
-      <% end %>
-      <!-- Navbar End-->
+      <% end %> <!-- Navbar End-->
 
       <%= yield %>
 
@@ -32,12 +30,11 @@
         </div>
         <div class="actions">
           <div class="ui green ok inverted button">
-            <i class="checkmark icon"></i>
-            Close
+            <i class="checkmark icon"></i>Close
           </div>
         </div>
-      </div><!-- Modal End -->
-    </div>
+      </div> <!-- Modal End -->
+    </div> <!-- Container End -->
 
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/semantic/semantic.min.js"></script>
