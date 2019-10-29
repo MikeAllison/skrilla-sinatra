@@ -18,7 +18,7 @@ enable :sessions
 
 before do
   # Force HTTPS
-  redirect to(request.url.gsub(/http:/i, 'https:')) if request.url.downcase.start_with?('http:')
+  #redirect to(request.url.gsub(/http:/i, 'https:')) if request.url.downcase.start_with?('http:')
   # Find logged in user
   @logged_in_user = User.find_by_token(request.cookies['p_token']) unless request.cookies['p_token'].nil?
 end
