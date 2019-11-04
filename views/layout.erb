@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Skrilla</title>
     <link rel="stylesheet" href="/semantic/semantic.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
   </head>
   <body>
     <div class="ui container">
       <!-- Navbar -->
       <% if @logged_in_user %>
-        <div class="ui inverted pointing menu">
+        <div class="ui inverted pointing menu" style="margin-bottom:30px">
           <div class="header item">Skrilla</div>
           <a href="/accounts" class="item <%= 'active' if request.path.match(/\A\/accounts/) %>">Accounts</a>
           <a href="/bills" class="item <%= 'active' if request.path.match(/\A\/bills/) %>">Bills</a>
@@ -38,13 +39,11 @@
 
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/semantic/semantic.min.js"></script>
+
+    <!-- Launch Modal -->
     <% if session[:message] %>
-      <script type="text/javascript">
-        $(function() {
-          $('#modal').modal('show');
-        });
-        <% session[:message] = nil %>
-      </script>
+      <script src="/js/modal.js"></script>
+      <% session[:message] = nil %>
     <% end %>
   </body>
 </html>

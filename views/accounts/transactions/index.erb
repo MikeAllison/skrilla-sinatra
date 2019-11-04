@@ -1,69 +1,82 @@
-<div class="row">
-  <div class="col">
-    <h3><%= @account.name %> - Transactions</h3>
+<h2><%= @account.name %> - Transactions</h2>
+
+<form method="post" class="ui form">
+  <div class="five fields">
+    <div class="field">
+      <label>Date</label>
+      <input type="date" id="date" name="date">
+    </div>
+    <div class="field">
+      <label>Merchant Name</label>
+      <input type="text" id="merchant" name="merchant" placeholder="Merchant Name">
+    </div>
+    <div class="field">
+      <label>Amount</label>
+      <input type="text" id="amount" name="amount" placeholder="0.00">
+    </div>
+    <div class="field">
+      <label>Credit?</label>
+      <div class="ui slider checkbox">
+        <input type="checkbox" tabindex="0" class="hidden">
+        <label>Yes</label>
+      </div>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button type="submit" class="ui green basic button">Submit</button>
+    </div>
   </div>
-</div>
 
-<div class="row mb-sm-2">
-  <div class="col">
-    <form class="form-inline" method="post">
-      <label class="sr-only" for="date">Date</label>
-      <input type="date" class="form-control mr-sm-2" id="date" name="date">
+</form>
 
-      <label class="sr-only" for="merchant">Merchant</label>
-      <input type="text" class="form-control mr-sm-2" id="merchant" name="merchant" placeholder="Merchant">
-
-      <label class="sr-only" for="Amount">Amount</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">$</div>
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Merchant</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
+        <td><%= transaction.merchant %></td>
+        <td>
+          <% if transaction.credit? %>
+            <span>$<%= to_currency(transaction.amount) %></span>
+          <% else %>
+            <span>$<%= to_currency(transaction.amount) %></span>
+          <% end %>
+        </td>
+        <td>
+          <div class="ui vertical animated basic button" tabindex="-1" data-link="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/edit">
+            <div class="hidden content">Edit</div>
+            <div class="visible content">
+              <i class="align edit icon"></i>
+            </div>
+          </div>
+          <div class="ui vertical animated basic button" tabindex="-1" data-link="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/delete">
+            <div class="hidden content">Delete</div>
+            <div class="visible content">
+              <i class="align trash alternate outline icon"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot class="full-width">
+    <tr>
+      <th colspan="4">
+        <div>
+          Balance: $<%= to_currency(@account.balance) %>
         </div>
-        <input type="text" class="form-control mr-sm-2" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="0.00">
-      </div>
+      </th>
+    </tr>
+  </tfoot>
+</table>
 
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="credit" name="credit">
-        <label class="custom-control-label mr-sm-2" for="credit">Credit</label>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-dark">Submit</button>
-    </form>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <table class="table table-sm">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Merchant</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @transactions.each do |transaction| %>
-          <tr>
-            <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
-            <td><%= transaction.merchant %></td>
-            <td>
-              <% if transaction.credit? %>
-                <span class="text-success">$<%= to_currency(transaction.amount) %></span>
-              <% else %>
-                <span class="text-danger">$<%= to_currency(transaction.amount) %></span>
-              <% end %>
-            </td>
-            <td>
-              <a href="transactions/<%= transaction.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a>
-              <a href="transactions/<%= transaction.id %>/delete" class="btn btn-outline-dark btn-sm">Delete</a>
-            </td>
-          </tr>
-        <% end %>
-        <tr>
-          <td colspan="4" class="text-right"><h5>Balance: $<%= to_currency(@account.balance) %></h5></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/accounts-transactions-index.js"></script>
