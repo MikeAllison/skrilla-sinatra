@@ -1,4 +1,3 @@
 rerun -b -- rackup -p 8080 config.ru
 
-working on 'transactions/index' form
-check to make sure all links have a '/' in front
+working on 'transactions/edit' form (dropdown)
