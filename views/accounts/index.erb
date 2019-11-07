@@ -2,7 +2,7 @@
 
 <div class="ui cards">
   <% @accounts.each do |account| %>
-    <div class="ui link card" data-link="/accounts/<%= account.url_safe_name %>/transactions">
+    <div class="ui link card" data-url="/accounts/<%= account.url_safe_name %>/transactions">
       <div class="content">
         <div class="header">
           <%= account.name %>

@@ -1,5 +1,5 @@
 $(function() {
   $('.card').click(function() {
-    window.location.replace($(this).attr('data-link'));
+    window.location.replace($(this).attr('data-url'));
   });
 });

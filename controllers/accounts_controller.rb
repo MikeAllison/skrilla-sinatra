@@ -32,7 +32,7 @@ get '/accounts/:url_safe_name/transactions' do
   redirect to('/login') unless @logged_in_user
 
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
-  @transactions = Transaction.where(account_id: @account.id).order(date: :asc)
+  @transactions = Transaction.where(account_id: @account.id).order(date: :desc)
 
   erb :'accounts/transactions/index'
 end

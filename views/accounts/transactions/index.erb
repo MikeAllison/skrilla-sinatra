@@ -51,13 +51,13 @@
           <% end %>
         </td>
         <td>
-          <div class="ui vertical animated basic button" tabindex="-1" data-link="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/edit">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/edit">
             <div class="hidden content">Edit</div>
             <div class="visible content">
               <i class="align edit icon"></i>
             </div>
           </div>
-          <div class="ui vertical animated basic button" tabindex="-1" data-link="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/delete">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/accounts/<%= transaction.account.url_safe_name %>/transactions/<%= transaction.id %>/delete">
             <div class="hidden content">Delete</div>
             <div class="visible content">
               <i class="align trash alternate outline icon"></i>
