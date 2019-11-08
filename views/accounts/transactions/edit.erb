@@ -12,23 +12,19 @@
     <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="<%= to_currency(@transaction.amount) %>">
   </div>
   <div class="field">
-    <div class="ui toggle checkbox">
+    <label style="margin-bottom:14px;">Credit?</label>
+    <div class="ui slider checkbox">
       <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
-      <label for="credit">Credit</label>
+      <label for="credit"></label>
     </div>
   </div>
   <div class="field">
     <label>Account</label>
-    <div class="ui search selection dropdown">
-      <input type="hidden" name="account" id="account">
-      <i class="dropdown icon"></i>
-      <div class="default text">Select Account</div>
-      <div class="menu">
-        <% @accounts.each do |account| %>
-          <div class="item" data-value="<%= account.id %>"><%= account.name %></div>
-        <% end %>
-      </div>
-    </div>
+    <select class="ui dropdown">
+      <% @accounts.each do |account| %>
+        <option value="<%= account.id %>"><%= account.name %></option>
+      <% end %>
+    </select>
   </div>
 
   <button type="submit" class="ui button">Submit</button>
@@ -39,10 +35,10 @@
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
   $(function() {
+    $('.ui.dropdown').dropdown();
+
     if (<%= @transaction.credit? %> === true) {
       $('#credit').attr('checked', 'checked');
     }
-
-    $('#account > option[value|=<%= @transaction.account_id %>]').attr('selected', 'selected');
   });
 </script>

@@ -15,10 +15,10 @@
       <input type="text" id="amount" name="amount" placeholder="0.00">
     </div>
     <div class="field">
-      <label>Credit?</label>
+      <label style="margin-bottom:14px;">Credit?</label>
       <div class="ui slider checkbox">
-        <input type="checkbox" tabindex="0" class="hidden">
-        <label>Yes</label>
+        <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
+        <label for="credit"></label>
       </div>
     </div>
     <div class="field">
@@ -45,9 +45,9 @@
         <td><%= transaction.merchant %></td>
         <td>
           <% if transaction.credit? %>
-            <span>$<%= to_currency(transaction.amount) %></span>
+            <span style="color:#21ba45;">$<%= to_currency(transaction.amount) %></span>
           <% else %>
-            <span>$<%= to_currency(transaction.amount) %></span>
+            <span style="color:#db2828;">$<%= to_currency(transaction.amount) %></span>
           <% end %>
         </td>
         <td>

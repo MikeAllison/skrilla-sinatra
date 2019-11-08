@@ -1,3 +1,8 @@
 rerun -b -- rackup -p 8080 config.ru
 
 working on 'transactions/edit' form (dropdown)
+
+TO-FIX:
+
+transactions/edit - account dropdown doesn't automatically select current account
+transactions/index - credits/debits not color-coded
