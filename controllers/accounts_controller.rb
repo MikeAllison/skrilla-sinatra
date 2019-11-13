@@ -62,7 +62,7 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
   transaction.merchant = params[:merchant].empty? ? transaction.merchant : params[:merchant]
   transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
   transaction.credit = params[:credit] == "on" ? true : false
-  transaction.account_id = params[:account]
+  transaction.account_id = params[:account_id]
   transaction.date = params[:date]
 
   if transaction.save

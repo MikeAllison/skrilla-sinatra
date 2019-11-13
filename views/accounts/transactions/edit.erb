@@ -1,3 +1,5 @@
+<h2>Transaction Details</h2>
+
 <form method="post" class="ui form">
   <div class="field">
     <label for="date" style="display:block">Date</label>
@@ -18,9 +20,9 @@
       <label for="credit"></label>
     </div>
   </div>
-  <div class="field">
+  <div id="account_dropdown" class="field">
     <label>Account</label>
-    <select class="ui dropdown">
+    <select class="ui dropdown" id="account_id" name="account_id">
       <% @accounts.each do |account| %>
         <option value="<%= account.id %>"><%= account.name %></option>
       <% end %>
@@ -36,6 +38,12 @@
 <script type="text/javascript">
   $(function() {
     $('.ui.dropdown').dropdown();
+
+    // Select the current account in the dropdown and Semantic UI
+    $('#account_dropdown option[value="<%= @transaction.account.id %>"]').attr('selected', 'true');
+    $('#account_dropdown div.text').text('<%= @transaction.account.name %>');
+    $('#account_dropdown div.item').removeClass('active selected');
+    $('#account_dropdown div.item[data-value="<%= @transaction.account.id %>"]').addClass('active selected');
 
     if (<%= @transaction.credit? %> === true) {
       $('#credit').attr('checked', 'checked');

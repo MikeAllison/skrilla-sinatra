@@ -5,4 +5,4 @@ working on 'transactions/edit' form (dropdown)
 TO-FIX:
 
 transactions/edit - account dropdown doesn't automatically select current account
-transactions/index - credits/debits not color-coded
+figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)
