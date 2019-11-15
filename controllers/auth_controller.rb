@@ -1,4 +1,4 @@
-get '/login/?' do
+get '/login' do
   redirect to('/accounts') if @logged_in_user
 
   erb :index
@@ -22,7 +22,7 @@ post '/login' do
   end
 end
 
-get '/logout/?' do
+get '/logout' do
   @logged_in_user.delete_persistence_token unless @logged_in_user.nil?
 
   response.delete_cookie(:p_token)

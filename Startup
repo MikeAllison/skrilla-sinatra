@@ -1,8 +1,7 @@
 rerun -b -- rackup -p 8080 config.ru
 
-working on 'transactions/edit' form (dropdown)
-
 TO-FIX:
 
-transactions/edit - account dropdown doesn't automatically select current account
+trying to figure out why successful transactions/edit update redirects to /accounts
+transactions/edit accepts text as a value
 figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)

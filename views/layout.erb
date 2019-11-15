@@ -42,7 +42,11 @@
 
     <!-- Launch Modal -->
     <% if session[:message] %>
-      <script src="/js/modal.js"></script>
+      <script type="text/javascript">
+        $(function() {
+          $('#modal').modal('show');
+        });
+      </script>
       <% session[:message] = nil %>
     <% end %>
   </body>

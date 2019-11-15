@@ -1,4 +1,4 @@
-get '/admin/settings/?' do
+get '/admin/settings' do
   halt 403 unless @logged_in_user
 
   @accounts = Account.all

@@ -1,4 +1,4 @@
-get '/bills/?' do
+get '/bills' do
   redirect to('/login') unless @logged_in_user
 
   @bills = Bill.all
