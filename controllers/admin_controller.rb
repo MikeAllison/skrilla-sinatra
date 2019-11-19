@@ -1,5 +1,5 @@
 get '/admin/settings' do
-  halt 403 unless @logged_in_user
+  redirect to ('/login') unless @logged_in_user
 
   @accounts = Account.all
   @users = User.all

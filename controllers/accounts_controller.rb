@@ -1,5 +1,4 @@
 get '/accounts' do
-  binding.pry
   redirect to('/login') unless @logged_in_user
 
   @accounts = Account.all

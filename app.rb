@@ -3,7 +3,6 @@ require 'sinatra/activerecord'
 require 'sinatra/cookies'
 require 'pry'
 require 'byebug'
-#require 'pry' if ENV['RACK_ENV'] == 'development'
 
 # Load all required files
 Dir["#{Dir.pwd}/config/*.rb"].each { |file| require file }
