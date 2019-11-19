@@ -3,5 +3,24 @@ rerun -b -- rackup -p 8080 config.ru
 TO-FIX:
 
 trying to figure out why successful transactions/edit update redirects to /accounts
+
+::1 - - [19/Nov/2019:12:56:41 -0500] "GET /accounts/boa-mastercard/transactions HTTP/1.1" 200 5482 0.0158
+D, [2019-11-19T12:56:47.506206 #19591] DEBUG -- :   User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."persistence_digest" = ? LIMIT 1  [["persistence_digest", "fd3246f8a7924ad1490a600e0286e7cf59044522d56b734e7f26d59ac61e0c36"]]
+::1 - - [19/Nov/2019:12:56:47 -0500] "GET /accounts/boa-mastercard/undefined HTTP/1.1" 302 - 0.0030
+D, [2019-11-19T12:56:47.516985 #19591] DEBUG -- :   User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."persistence_digest" = ? LIMIT 1  [["persistence_digest", "fd3246f8a7924ad1490a600e0286e7cf59044522d56b734e7f26d59ac61e0c36"]]
+::1 - - [19/Nov/2019:12:56:47 -0500] "GET / HTTP/1.1" 302 - 0.0033
+D, [2019-11-19T12:56:47.525757 #19591] DEBUG -- :   User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."persistence_digest" = ? LIMIT 1  [["persistence_digest", "fd3246f8a7924ad1490a600e0286e7cf59044522d56b734e7f26d59ac61e0c36"]]
+::1 - - [19/Nov/2019:12:56:47 -0500] "GET /login HTTP/1.1" 302 - 0.0025
+D, [2019-11-19T12:56:47.535648 #19591] DEBUG -- :   User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."persistence_digest" = ? LIMIT 1  [["persistence_digest", "fd3246f8a7924ad1490a600e0286e7cf59044522d56b734e7f26d59ac61e0c36"]]
+D, [2019-11-19T12:56:47.537107 #19591] DEBUG -- :    (0.2ms)  SELECT COUNT(*) FROM "accounts"
+D, [2019-11-19T12:56:47.539572 #19591] DEBUG -- :   Account Load (0.4ms)  SELECT "accounts".* FROM "accounts"
+D, [2019-11-19T12:56:47.541675 #19591] DEBUG -- :   Transaction Load (0.2ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 1]]
+D, [2019-11-19T12:56:47.543535 #19591] DEBUG -- :   Transaction Load (0.3ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 2]]
+D, [2019-11-19T12:56:47.544947 #19591] DEBUG -- :   Transaction Load (0.2ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 3]]
+D, [2019-11-19T12:56:47.545889 #19591] DEBUG -- :   Transaction Load (0.2ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 4]]
+D, [2019-11-19T12:56:47.546868 #19591] DEBUG -- :   Transaction Load (0.2ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 5]]
+D, [2019-11-19T12:56:47.548575 #19591] DEBUG -- :   Transaction Load (0.3ms)  SELECT "transactions".* FROM "transactions" WHERE "transactions"."account_id" = ?  [["account_id", 6]]
+::1 - - [19/Nov/2019:12:56:47 -0500] "GET /accounts HTTP/1.1" 200 3716 0.0186
+
 transactions/edit accepts text as a value
 figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)
