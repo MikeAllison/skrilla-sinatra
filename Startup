@@ -2,5 +2,6 @@ rerun -b -- rackup -p 8080 config.ru
 
 TO-FIX:
 
-transactions/edit accepts text as a value
+add frontend validation to forms
+
 figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)
