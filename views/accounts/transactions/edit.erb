@@ -5,9 +5,13 @@
     <label for="date" style="display:block">Date</label>
     <input type="date" class="form-control" id="date" name="date" value="<%= @transaction.date %>">
   </div>
-  <div class="field">
-    <label for="merchant">Merchant</label>
-    <input type="text" class="form-control" id="merchant" name="merchant" aria-describedby="merchant" placeholder="<%= @transaction.merchant %>">
+  <div id="merchant_dropdown" class="field">
+    <label>Merchant</label>
+    <select class="ui dropdown" id="merchant_id" name="merchant_id">
+      <% @merchants.each do |merchant| %>
+        <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
   </div>
   <div class="field">
     <label for="amount">Amount</label>
@@ -38,6 +42,12 @@
 <script type="text/javascript">
   $(function() {
     $('.ui.dropdown').dropdown();
+
+    // Select the current account in the dropdown and Semantic UI
+    $('#merchant_dropdown option[value="<%= @transaction.merchant.id %>"]').attr('selected', 'true');
+    $('#merchant_dropdown div.text').text('<%= @transaction.merchant.name %>');
+    $('#merchant_dropdown div.item').removeClass('active selected');
+    $('#merchant_dropdown div.item[data-value="<%= @transaction.merchant.id %>"]').addClass('active selected');
 
     // Select the current account in the dropdown and Semantic UI
     $('#account_dropdown option[value="<%= @transaction.account.id %>"]').attr('selected', 'true');

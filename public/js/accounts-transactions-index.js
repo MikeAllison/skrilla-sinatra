@@ -1,4 +1,8 @@
 $(function() {
+  $(function() {
+    $('.ui.dropdown').dropdown();
+  });
+  
   $('.button').click(function() {
     $url = $(this).attr('data-url');
 

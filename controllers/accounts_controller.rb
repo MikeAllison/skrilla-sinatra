@@ -31,6 +31,7 @@ end
 get '/accounts/:url_safe_name/transactions' do
   redirect to('/login') unless @logged_in_user
 
+  @merchants = Merchant.all
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
   @transactions = Transaction.where(account_id: @account.id).order(date: :desc)
 
@@ -47,6 +48,7 @@ get '/accounts/:url_safe_name/transactions/:id/edit' do
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   end
 
+  @merchants = Merchant.all
   @accounts = Account.all
 
   erb :'accounts/transactions/edit'
@@ -59,7 +61,7 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
 
   transaction = Transaction.find_by(id: params[:id])
 
-  transaction.merchant = params[:merchant].empty? ? transaction.merchant : params[:merchant]
+  transaction.merchant_id = params[:merchant_id]
   transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
   transaction.credit = params[:credit] == "on" ? true : false
   transaction.account_id = params[:account_id]
