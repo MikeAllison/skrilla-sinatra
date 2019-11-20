@@ -1,5 +1,9 @@
 $(function() {
   $('.button').click(function() {
-    window.location.replace($(this).attr('data-url'));
+    $url = $(this).attr('data-url');
+
+    if ($url) {
+      window.location.replace($url);
+    }
   });
 });
