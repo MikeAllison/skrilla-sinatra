@@ -48,18 +48,4 @@
 </div>
 
 <script src="/js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-  var timeNow = new Date();
-
-  var month = timeNow.getMonth() + 1;
-  month = (month < 10) ? ('0' + month) : month;
-
-  var day = timeNow.getDate();
-  day = (day < 10) ? ('0' + day) : day;
-
-  var date = timeNow.getFullYear() + '-' + month + '-' + day;
-
-  $(function() {
-    $('#start-date').attr('value', date);
-  });
-</script>
+<script src="/js/bills/edit.js"></script>

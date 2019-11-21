@@ -48,7 +48,7 @@ post '/accounts/:url_safe_name/transactions' do
   if transaction.save
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   else
-    session[:message] = { :heading => 'Error', :body => 'There was a problem adding the account.  Please try again.' }
+    session[:message] = { :heading => 'Error', :body => 'There was a problem adding the transaction.  Please try again.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   end
 
