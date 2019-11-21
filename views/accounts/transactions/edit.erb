@@ -2,7 +2,7 @@
 
 <form method="post" class="ui form">
   <div class="field">
-    <label for="date" style="display:block">Date</label>
+    <label for="date">Date</label>
     <input type="date" class="form-control" id="date" name="date" value="<%= @transaction.date %>">
   </div>
   <div id="merchant_dropdown" class="field">
@@ -41,7 +41,7 @@
   $(function() {
     $('.ui.dropdown').dropdown();
 
-    // Select the current account in the dropdown and Semantic UI
+    // Select the current merchant in the dropdown and Semantic UI
     $('#merchant_dropdown option[value="<%= @transaction.merchant.id %>"]').attr('selected', 'true');
     $('#merchant_dropdown div.text').text('<%= @transaction.merchant.name %>');
     $('#merchant_dropdown div.item').removeClass('active selected');

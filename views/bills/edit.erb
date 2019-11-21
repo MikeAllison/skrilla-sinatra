@@ -1,50 +1,53 @@
-<div class="row">
-  <div class="col">
-    <form method="post">
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" name="description" aria-describedby="description" placeholder="<%= @bill.description %>">
-      </div>
-      <div class="form-group">
-        <label for="description">Merchant</label>
-        <input type="text" class="form-control" id="merchant" name="merchant_id" aria-describedby="merchant" placeholder="To-DO">
-      </div>
-      <div class="form-group">
-        <label for="amount">Amount</label>
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">$</span>
-          </div>
-          <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)">
-        </div>
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="credit" name="credit">
-          <label class="custom-control-label" for="credit">Credit</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="account">Account</label>
-        <select class="form-control custom-select" id="account" name="account">
-          <% @accounts.each do |account| %>
-            <option value="<%= account.id %>"><%= account.name %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="bill-frequency">Frequency</label>
-        <select class="form-control" id="bill-frequency" name="bill-frequency">
-          <% @bill_frequencies.each do |bill_frequency| %>
-            <option value="<%= bill_frequency.id %>"><%= bill_frequency.name %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="start-date">Start Date</label>
-        <input type="date" id="start-date" name="start-date">
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<h2>Bill Details</h2>
+
+<form method="post" class="ui form">
+  <div class="field">
+    <label for="description">Description</label>
+    <input type="text" class="form-control" id="description" name="description" value="<%= @bill.description %>">
   </div>
-</div>
+  <div id="bill_frequency_dropdown" class="field">
+    <label>Frequency</label>
+    <select class="ui dropdown" id="bill_frequency_id" name="bill_frequency_id">
+      <% @bill_frequencies.each do |bill_frequency| %>
+        <option value="<%= bill_frequency.id %>"><%= bill_frequency.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <label for="starting-date">Starting Date</label>
+    <input type="date" class="form-control" id="starting-date" name="starting-date">
+  </div>
+  <div class="field">
+    <label for="ending-date">Ending Date</label>
+    <input type="date" class="form-control" id="ending-date" name="ending-date">
+  </div>
+  <div class="field">
+    <label for="amount">Amount</label>
+    <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="TO-DO">
+  </div>
+  <div class="field">
+    <label style="margin-bottom:14px;">Credit?</label>
+    <div class="ui slider checkbox">
+      <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
+      <label for="credit"></label>
+    </div>
+  </div>
+  <div id="account_dropdown" class="field">
+    <label>Account</label>
+    <select class="ui dropdown" id="account_id" name="account_id">
+      <% @accounts.each do |account| %>
+        <option value="<%= account.id %>"><%= account.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <button type="submit" class="ui button">Submit</button>
+  <a href="/bills" class="ui button">Cancel</a>
+</form>
 
 <script src="/js/bills/edit.js"></script>
+<script>
+  $(function() {
+    $('.ui.dropdown').dropdown();
+  });
+</script>
