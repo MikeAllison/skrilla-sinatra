@@ -20,20 +20,16 @@
         <td>To-Do</td>
         <td><%= bill.bill_frequency.name %></td>
         <td>
-          <div class="ui vertical animated basic button" tabindex="-1">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bills/<%= bill.id %>/mark-as-paid">
             <div class="hidden content">Paid</div>
             <div class="visible content">
-              <a href="/bills/<%= bill.id %>/mark-as-paid">
-                <i class="money bill alternate outline icon"></i>
-              </a>
+              <i class="money bill alternate outline icon"></i>
             </div>
           </div>
-          <div class="ui vertical animated basic button" tabindex="-1">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bills/<%= bill.id %>/edit">
             <div class="hidden content">Edit</div>
             <div class="visible content">
-              <a href="/bills/<%= bill.id %>/edit">
-                <i class="edit icon"></i>
-              </a>
+              <i class="align edit icon"></i>
             </div>
           </div>
         </td>
