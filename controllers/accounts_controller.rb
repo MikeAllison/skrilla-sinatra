@@ -1,10 +1,10 @@
-get '/accounts/?' do
+get '/accounts' do
   redirect to('/login') unless @logged_in_user
 
   @accounts = Account.all
 
   if @accounts.empty?
-    session[:message] = { :heading => 'Error', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
+    session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
     redirect to("/accounts/new")
   end
 
@@ -31,8 +31,9 @@ end
 get '/accounts/:url_safe_name/transactions' do
   redirect to('/login') unless @logged_in_user
 
+  @merchants = Merchant.all
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
-  @transactions = Transaction.where(account_id: @account.id).order(date: :asc)
+  @transactions = Transaction.where(account_id: @account.id).order(date: :desc)
 
   erb :'accounts/transactions/index'
 end
@@ -47,6 +48,7 @@ get '/accounts/:url_safe_name/transactions/:id/edit' do
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   end
 
+  @merchants = Merchant.all
   @accounts = Account.all
 
   erb :'accounts/transactions/edit'
@@ -59,15 +61,16 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
 
   transaction = Transaction.find_by(id: params[:id])
 
-  transaction.merchant = params[:merchant].empty? ? transaction.merchant : params[:merchant]
+  transaction.merchant_id = params[:merchant_id]
   transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
   transaction.credit = params[:credit] == "on" ? true : false
-  transaction.account_id = params[:account]
+  transaction.account_id = params[:account_id]
   transaction.date = params[:date]
 
   if transaction.save
     session[:message] = { :heading => 'Success', :body => 'Your changes were saved.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+    binding.pry
   else
     session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions/#{params[:id]}/edit")

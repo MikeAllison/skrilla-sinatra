@@ -1,38 +1,43 @@
-<div class="row">
-  <div class="col">
-    <h3>Bills</h3>
-  </div>
-</div>
+<h2>Bills</h2>
 
-<div class="row">
-  <div class="col">
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Next Payment Date</th>
-          <th>Amount</th>
-          <th>Description</th>
-          <th>Frequency</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @bills.each do |bill| %>
-          <tr>
-            <td>To-Do</td>
-            <td>To-Do</td>
-            <td><%= bill.description %></td>
-            <td><%= bill.bill_frequency.name %></td>
-            <td>
-              <a href="bills/<%= bill.id %>/mark-as-paid" class="btn btn-outline-dark btn-sm">Mark As Paid</a>
-              <a href="bills/<%= bill.id %>/edit" class="btn btn-outline-dark btn-sm">Edit</a>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <th>Next Payment Date</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Merchant</th>
+      <th>Frequency</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bills.each do |bill| %>
+      <tr>
+        <td>To-Do</td>
+        <td>To-Do</td>
+        <td><%= bill.description %></td>
+        <td>To-Do</td>
+        <td><%= bill.bill_frequency.name %></td>
+        <td>
+          <div class="ui vertical animated basic button" tabindex="-1">
+            <div class="hidden content">Paid</div>
+            <div class="visible content">
+              <a href="/bills/<%= bill.id %>/mark-as-paid">
+                <i class="money bill alternate outline icon"></i>
+              </a>
+            </div>
+          </div>
+          <div class="ui vertical animated basic button" tabindex="-1">
+            <div class="hidden content">Edit</div>
+            <div class="visible content">
+              <a href="/bills/<%= bill.id %>/edit">
+                <i class="edit icon"></i>
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

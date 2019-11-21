@@ -1,27 +1,26 @@
-<div class="row">
-  <div class="col">
-    <h3>Accounts</h3>
-  </div>
-</div>
+<h2>Accounts</h2>
 
-<div class="row">
+<div class="ui cards">
   <% @accounts.each do |account| %>
-    <div class="col-sm-1 col-md-4">
-      <div class="card text-white bg-dark" style="margin-bottom: .5rem;">
-        <div class="card-header"><h5><%= account.name %></h5></div>
-        <div class="card-body">
-          Balance: $<%= to_currency(account.balance) %>
+    <div class="ui link card" data-url="/accounts/<%= account.url_safe_name %>/transactions">
+      <div class="content">
+        <div class="header">
+          <%= account.name %>
         </div>
-        <div class="card-footer">
-          <a href="accounts/<%= account.url_safe_name %>/transactions" class="btn btn-sm btn-outline-light">View</a>
+        <div class="description">
+          <p>Balance: $<%= to_currency(account.balance) %></p>
         </div>
+      </div>
+      <div class="ui bottom attached button">
+        View
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="row">
-  <div class="col">
-    <a href="accounts/new" class="float-right">Add an Account</a>
-  </div>
+<div class="ui segment">
+  <a href="/accounts/new" class="ui green basic button">Add an Account</a>
 </div>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/accounts-index.js"></script>

@@ -1,3 +1,7 @@
 rerun -b -- rackup -p 8080 config.ru
 
-working on 'transactions/index' form
+TO-FIX:
+
+add frontend validation to forms
+
+figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)
