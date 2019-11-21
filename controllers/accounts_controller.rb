@@ -5,7 +5,7 @@ get '/accounts' do
 
   if @accounts.empty?
     session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
-    redirect to("/accounts/new")
+    redirect to('/accounts/new')
   end
 
   erb :'accounts/index'
@@ -24,7 +24,7 @@ post '/accounts/new' do
     redirect to("/accounts")
   else
     session[:message] = { :heading => 'Error', :body => 'There was a problem adding the account.  Please try again.' }
-    redirect to("/accounts/new")
+    redirect to('/accounts/new')
   end
 end
 
@@ -34,6 +34,23 @@ get '/accounts/:url_safe_name/transactions' do
   @merchants = Merchant.all
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
   @transactions = Transaction.where(account_id: @account.id).order(date: :desc)
+
+  erb :'accounts/transactions/index'
+end
+
+post '/accounts/:url_safe_name/transactions' do
+  redirect to('/login') unless @logged_in_user
+
+  account = Account.find_by(url_safe_name: params[:url_safe_name])
+  credit = params[:credit] == "on" ? true : false
+  transaction = Transaction.new(merchant_id: params[:merchant_id], date: params[:date], amount: params[:amount], account_id: account.id, credit: credit)
+
+  if transaction.save
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  else
+    session[:message] = { :heading => 'Error', :body => 'There was a problem adding the account.  Please try again.' }
+    redirect to("/accounts/#{params[:url_safe_name]}/transactions")
+  end
 
   erb :'accounts/transactions/index'
 end
@@ -70,7 +87,6 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
   if transaction.save
     session[:message] = { :heading => 'Success', :body => 'Your changes were saved.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
-    binding.pry
   else
     session[:message] = { :heading => 'Update Failed', :body => 'There was a problem saving your changes.  Please try again.' }
     redirect to("/accounts/#{params[:url_safe_name]}/transactions/#{params[:id]}/edit")
