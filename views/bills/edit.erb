@@ -3,11 +3,11 @@
 <form method="post" class="ui form">
   <div class="field">
     <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" name="description" value="<%= @bill.description %>">
+    <input type="text" id="description" name="description" class="form-control" value="<%= @bill.description %>">
   </div>
   <div id="bill_frequency_dropdown" class="field">
     <label>Frequency</label>
-    <select class="ui dropdown" id="bill_frequency_id" name="bill_frequency_id">
+    <select id="bill_frequency_id" name="bill_frequency_id" class="ui dropdown">
       <% @bill_frequencies.each do |bill_frequency| %>
         <option value="<%= bill_frequency.id %>"><%= bill_frequency.name %></option>
       <% end %>
@@ -15,15 +15,15 @@
   </div>
   <div class="field">
     <label for="starting-date">Starting Date</label>
-    <input type="date" class="form-control" id="starting-date" name="starting-date">
+    <input type="date" id="starting-date" name="starting-date" class="form-control">
   </div>
   <div class="field">
     <label for="ending-date">Ending Date</label>
-    <input type="date" class="form-control" id="ending-date" name="ending-date">
+    <input type="date" id="ending-date" name="ending-date" class="form-control">
   </div>
   <div class="field">
     <label for="amount">Amount</label>
-    <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="TO-DO">
+    <input type="text" id="amount" name="amount" class="form-control" placeholder="TO-DO">
   </div>
   <div class="field">
     <label style="margin-bottom:14px;">Credit?</label>
@@ -34,7 +34,7 @@
   </div>
   <div id="account_dropdown" class="field">
     <label>Account</label>
-    <select class="ui dropdown" id="account_id" name="account_id">
+    <select id="account_id" name="account_id" class="ui dropdown">
       <% @accounts.each do |account| %>
         <option value="<%= account.id %>"><%= account.name %></option>
       <% end %>

@@ -3,7 +3,7 @@
 <form method="post" class="ui form">
   <div class="field">
     <label for="date">Date</label>
-    <input type="date" class="form-control" id="date" name="date" value="<%= @transaction.date %>">
+    <input type="date" id="date" name="date" class="form-control" value="<%= @transaction.date %>">
   </div>
   <div class="field">
     <label>Merchant</label>
@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <label for="amount">Amount</label>
-    <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="<%= to_currency(@transaction.amount) %>">
+    <input type="text" id="amount" name="amount" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="<%= to_currency(@transaction.amount) %>">
   </div>
   <div class="field">
     <label style="margin-bottom:14px;">Credit?</label>
