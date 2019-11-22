@@ -40,7 +40,6 @@ end
 
 post '/accounts/:url_safe_name/transactions' do
   redirect to('/login') unless @logged_in_user
-  binding.pry
 
   account = Account.find_by(url_safe_name: params[:url_safe_name])
   credit = params[:credit] == "on" ? true : false
@@ -79,10 +78,10 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
 
   transaction = Transaction.find_by(id: params[:id])
 
-  transaction.merchant_id = params[:merchant_id]
+  transaction.merchant_id = params[:merchant_id].empty? ? transaction.merchant_id : params[:merchant_id]
   transaction.amount = params[:amount].empty? ? transaction.amount : params[:amount]
   transaction.credit = params[:credit] == "on" ? true : false
-  transaction.account_id = params[:account_id]
+  transaction.account_id = params[:account_id].empty? ? transaction.account_id : params[:account_id]
   transaction.date = params[:date]
 
   if transaction.save

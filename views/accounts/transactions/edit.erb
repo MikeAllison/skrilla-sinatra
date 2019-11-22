@@ -5,13 +5,18 @@
     <label for="date">Date</label>
     <input type="date" class="form-control" id="date" name="date" value="<%= @transaction.date %>">
   </div>
-  <div id="merchant_dropdown" class="field">
+  <div class="field">
     <label>Merchant</label>
-    <select class="ui dropdown" id="merchant_id" name="merchant_id">
-      <% @merchants.each do |merchant| %>
-        <option value="<%= merchant.id %>"><%= merchant.name %></option>
-      <% end %>
-    </select>
+    <div id="merchant_dropdown" name="merchant_dropdown" class="ui fluid search selection dropdown">
+      <input type="hidden" id="merchant_id" name="merchant_id">
+      <i class="dropdown icon"></i>
+      <div class="default text"><%= @transaction.merchant.name %></div>
+      <div class="menu">
+        <% @merchants.each do |merchant| %>
+          <div class="item" data-value="<%= merchant.id %>"><%= merchant.name %></div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="field">
     <label for="amount">Amount</label>
@@ -24,13 +29,18 @@
       <label for="credit"></label>
     </div>
   </div>
-  <div id="account_dropdown" class="field">
+  <div class="field">
     <label>Account</label>
-    <select class="ui dropdown" id="account_id" name="account_id">
-      <% @accounts.each do |account| %>
-        <option value="<%= account.id %>"><%= account.name %></option>
-      <% end %>
-    </select>
+    <div id="account_dropdown" name="account_dropdown" class="ui fluid search selection dropdown">
+      <input type="hidden" id="account_id" name="account_id">
+      <i class="dropdown icon"></i>
+      <div class="default text"><%= @transaction.account.name %></div>
+      <div class="menu">
+        <% @accounts.each do |account| %>
+          <div class="item" data-value="<%= account.id %>"><%= account.name %></div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <button type="submit" class="ui button">Submit</button>
@@ -42,15 +52,9 @@
     $('.ui.dropdown').dropdown();
 
     // Select the current merchant in the dropdown and Semantic UI
-    $('#merchant_dropdown option[value="<%= @transaction.merchant.id %>"]').attr('selected', 'true');
-    $('#merchant_dropdown div.text').text('<%= @transaction.merchant.name %>');
-    $('#merchant_dropdown div.item').removeClass('active selected');
     $('#merchant_dropdown div.item[data-value="<%= @transaction.merchant.id %>"]').addClass('active selected');
 
     // Select the current account in the dropdown and Semantic UI
-    $('#account_dropdown option[value="<%= @transaction.account.id %>"]').attr('selected', 'true');
-    $('#account_dropdown div.text').text('<%= @transaction.account.name %>');
-    $('#account_dropdown div.item').removeClass('active selected');
     $('#account_dropdown div.item[data-value="<%= @transaction.account.id %>"]').addClass('active selected');
 
     if (<%= @transaction.credit? %> === true) {
