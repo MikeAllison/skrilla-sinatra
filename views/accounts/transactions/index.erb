@@ -8,11 +8,16 @@
     </div>
     <div class="field">
       <label>Merchant Name</label>
-      <select class="ui dropdown" id="merchant_id" name="merchant_id">
-        <% @merchants.each do |merchant| %>
-          <option value="<%= merchant.id %>"><%= merchant.name %></option>
-        <% end %>
-      </select>
+      <div class="ui fluid search selection dropdown">
+        <input type="hidden" id="merchant_id" name="merchant_id">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select Merchant</div>
+        <div class="menu">
+          <% @merchants.each do |merchant| %>
+            <div class="item" data-value="<%= merchant.id %>"><%= merchant.name %></div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="field">
       <label>Amount</label>
