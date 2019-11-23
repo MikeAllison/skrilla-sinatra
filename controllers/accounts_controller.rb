@@ -4,27 +4,22 @@ get '/accounts' do
   @accounts = Account.all
 
   if @accounts.empty?
-    session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  You will be redirected to the new account page.' }
-    redirect to('/accounts/new')
+    session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  Please add an account.' }
   end
 
   erb :'accounts/index'
 end
 
-get '/accounts/new' do
-  erb :'accounts/new'
-end
-
-post '/accounts/new' do
+post '/accounts' do
   account = Account.new(name: params[:name], starting_balance: params[:starting_balance])
 
   if account.save
-    Transaction.create(merchant: 'Starting Balance', date: Date.today, amount: account.starting_balance, account_id: account.id, credit: true)
+    Transaction.create(merchant: Merchant.find_or_create_by(name: 'Starting Balance'), date: Date.today, amount: account.starting_balance, account_id: account.id, credit: true)
     session[:message] = { :heading => 'Success', :body => 'The account was added.' }
     redirect to("/accounts")
   else
     session[:message] = { :heading => 'Error', :body => 'There was a problem adding the account.  Please try again.' }
-    redirect to('/accounts/new')
+    redirect to('/accounts')
   end
 end
 

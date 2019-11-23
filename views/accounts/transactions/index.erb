@@ -1,42 +1,46 @@
 <h2><%= @account.name %> - Transactions</h2>
+<h3>Balance: $<%= to_currency(@account.balance) %></h3>
 
-<form method="post" class="ui form">
-  <div class="five fields">
-    <div class="field">
-      <label>Date</label>
-      <input type="date" id="date" name="date">
-    </div>
-    <div class="field">
-      <label>Merchant</label>
-      <div class="ui fluid search selection dropdown">
-        <input type="hidden" id="merchant_id" name="merchant_id">
-        <i class="dropdown icon"></i>
-        <div class="default text">Select Merchant</div>
-        <div class="menu">
-          <% @merchants.each do |merchant| %>
-            <div class="item" data-value="<%= merchant.id %>"><%= merchant.name %></div>
-          <% end %>
+<div class="ui segment">
+  <form method="post" class="ui form">
+    <div class="five fields">
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="date" name="date">
+      </div>
+      <div class="field">
+        <label>Merchant</label>
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" id="merchant_id" name="merchant_id">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Merchant</div>
+          <div class="menu">
+            <div class="item"><a href="/merchants/new">Add a Merchant</a></div>
+            <div class="divider"></div>
+            <% @merchants.each do |merchant| %>
+              <div class="item" data-value="<%= merchant.id %>"><%= merchant.name %></div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="field">
-      <label>Amount</label>
-      <input type="text" id="amount" name="amount" placeholder="0.00">
-    </div>
-    <div class="field">
-      <label style="margin-bottom:14px;">Credit?</label>
-      <div class="ui slider checkbox">
-        <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
-        <label for="credit"></label>
+      <div class="field">
+        <label>Amount</label>
+        <input type="text" id="amount" name="amount" placeholder="0.00">
+      </div>
+      <div class="field">
+        <label style="margin-bottom:14px;">Credit?</label>
+        <div class="ui slider checkbox">
+          <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
+          <label for="credit"></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button type="submit" class="ui green basic button">Add Transaction</button>
       </div>
     </div>
-    <div class="field">
-      <label>&nbsp;</label>
-      <button type="submit" class="ui green basic button">Submit</button>
-    </div>
-  </div>
-
-</form>
+  </form>
+</div>
 
 <table class="ui striped table">
   <thead>
@@ -76,15 +80,6 @@
       </tr>
     <% end %>
   </tbody>
-  <tfoot class="full-width">
-    <tr>
-      <th colspan="4">
-        <div>
-          Balance: $<%= to_currency(@account.balance) %>
-        </div>
-      </th>
-    </tr>
-  </tfoot>
 </table>
 
 <script src="/js/accounts/transactions/index.js"></script>

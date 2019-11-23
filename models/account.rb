@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
   validates :name, uniqueness: true
   validates_presence_of :starting_balance
 
-  before_create do
+  before_save do
     self.name.strip!
     self.url_safe_name = self.name.strip.gsub(/\s/, '-').downcase!
   end

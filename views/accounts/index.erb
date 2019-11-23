@@ -1,5 +1,24 @@
 <h2>Accounts</h2>
 
+<div class="ui segment">
+  <form method="post" class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="field">
+        <label>Starting Balance</label>
+        <input type="text" id="starting_balance" name="starting_balance" placeholder="0.00">
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button type="submit" class="ui green basic button">Add Account</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 <div class="ui cards">
   <% @accounts.each do |account| %>
     <div class="ui link card" data-url="/accounts/<%= account.url_safe_name %>/transactions">
@@ -16,10 +35,6 @@
       </div>
     </div>
   <% end %>
-</div>
-
-<div class="ui segment">
-  <a href="/accounts/new" class="ui green basic button">Add an Account</a>
 </div>
 
 <script src="/js/accounts/index.js"></script>
