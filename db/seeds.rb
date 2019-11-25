@@ -1,7 +1,7 @@
 Dir["./models/*.rb"].each { |file| require file }
 
 User.create(username: 'test', password: 'test')
-=begin
+#=begin
 Account.create(name: 'BOA Checking')
 Account.create(name: 'BOA Savings')
 Account.create(name: 'BOA MasterCard')
@@ -36,4 +36,4 @@ Bill.create(description: "Rent", bill_frequency_id: 5)
 Bill.create(description: "BOA Credit Card Payment", bill_frequency_id: 1)
 Bill.create(description: "Band Rent", bill_frequency_id: 5)
 Bill.create(description: "Paycheck", bill_frequency_id: 4)
-=end
+#=end

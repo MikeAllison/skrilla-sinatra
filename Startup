@@ -3,7 +3,6 @@ rerun -b -- rackup -p 8080 config.ru
 TO-FIX:
 
 buttons on bills/index don't work
-check to make sure that form buttons are type submit and figure out the tabindex=0 thing
 
 add frontend validation to forms
 
