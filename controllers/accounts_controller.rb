@@ -11,6 +11,8 @@ get '/accounts' do
 end
 
 post '/accounts' do
+  redirect to('/login') unless @logged_in_user
+  
   account = Account.new(name: params[:name], starting_balance: params[:starting_balance])
 
   if account.save

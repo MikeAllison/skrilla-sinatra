@@ -1,12 +1,16 @@
 <h2>Bills</h2>
 
+<div class="ui segment">
+  <a href="/bills/new" class="ui green basic button">Add a Bill</a>
+</div>
+
 <table class="ui striped six column very compact table">
   <thead>
     <tr>
       <th>Next Payment Date</th>
-      <th>Amount</th>
       <th>Description</th>
       <th>Merchant</th>
+      <th>Amount</th>
       <th>Frequency</th>
       <th>Actions</th>
     </tr>
@@ -14,11 +18,11 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <td>To-Do</td>
-        <td>To-Do</td>
+        <td>TO-DO</td>
         <td><%= bill.description %></td>
-        <td>To-Do</td>
-        <td><%= bill.bill_frequency.name %></td>
+        <td>TO-DO</td>
+        <td>TO-DO</td>
+        <td>TO-DO</td>
         <td>
           <div class="ui vertical animated basic button" tabindex="-1" data-url="/bills/<%= bill.id %>/mark-as-paid">
             <div class="hidden content">Paid</div>

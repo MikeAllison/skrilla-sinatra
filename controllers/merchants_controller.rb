@@ -12,6 +12,8 @@ get '/merchants' do
 end
 
 post '/merchants' do
+  redirect to('/login') unless @logged_in_user
+
   merchant = Merchant.new(name: params[:name])
 
   if merchant.save
@@ -24,12 +26,16 @@ post '/merchants' do
 end
 
 get '/merchants/:url_safe_name/edit' do
+  redirect to('/login') unless @logged_in_user
+
   @merchant = Merchant.find_by(url_safe_name: params[:url_safe_name])
 
   erb :'merchants/edit'
 end
 
 post '/merchants/:url_safe_name/edit' do
+  redirect to('/login') unless @logged_in_user
+  
   merchant = Merchant.find_by(url_safe_name: params[:url_safe_name])
 
   if merchant.update(name: params[:name])

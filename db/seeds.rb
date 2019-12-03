@@ -24,12 +24,12 @@ Transaction.create(merchant_id: 2, date: '2019-01-03', amount: 1000.00, account_
 Transaction.create(merchant_id: 3, date: '2019-01-01', amount: 3.00, account_id: 3, credit: false)
 Transaction.create(merchant_id: 2, date: '2019-01-02', amount: 0.03, account_id: 3, credit: false)
 
-BillFrequency.create(name: "Once")
-BillFrequency.create(name: "Daily")
-BillFrequency.create(name: "Weekly")
-BillFrequency.create(name: "Bi-Weekly")
-BillFrequency.create(name: "Monthly")
-BillFrequency.create(name: "Yearly")
+#BillFrequency.create(name: "Once")
+#BillFrequency.create(name: "Daily")
+#BillFrequency.create(name: "Weekly")
+#BillFrequency.create(name: "Bi-Weekly")
+#BillFrequency.create(name: "Monthly")
+#BillFrequency.create(name: "Yearly")
 
 Bill.create(description: "Cell Phone", bill_frequency_id: 5)
 Bill.create(description: "Rent", bill_frequency_id: 5)

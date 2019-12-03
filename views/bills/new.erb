@@ -1,17 +1,9 @@
-<h2 class="ui dividing header">Bill Details</h2>
+<h2 class="ui dividing header">Add a Bill</h2>
 
 <form method="post" class="ui form">
   <div class="field">
     <label for="description">Description</label>
-    <input type="text" id="description" name="description" class="form-control" value="<%= @bill.description %>">
-  </div>
-  <div id="merchant_dropdown" class="field">
-    <label>Merchant</label>
-    <select id="merchant_id" name="merchant_id" class="ui dropdown">
-      <% @merchants.each do |merchant| %>
-        <option value="<%= merchant.id %>"><%= merchant.name %></option>
-      <% end %>
-    </select>
+    <input type="text" id="description" name="description" class="form-control" placeholder="Description">
   </div>
   <div id="bill_frequency_dropdown" class="field">
     <label>Frequency</label>
