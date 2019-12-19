@@ -12,6 +12,7 @@ get '/bills/:id/edit' do
   @bill = Bill.find_by(params[:id])
   @bill_frequencies = BillFrequency.all
   @accounts = Account.all
+  @merchants = Merchant.all
 
   erb :'bills/edit'
 end

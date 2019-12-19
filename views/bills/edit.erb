@@ -2,8 +2,16 @@
 
 <form method="post" class="ui form">
   <div class="field">
-    <label for="description">Description</label>
+    <label>Description</label>
     <input type="text" class="form-control" id="description" name="description" value="<%= @bill.description %>">
+  </div>
+  <div class="field">
+    <label>Merchant - <a href="/merchants/new">Add</a></label>
+    <select class="ui search dropdown" id="merchant_id" name="merchant_id">
+      <% @merchants.each do |merchant| %>
+        <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
   </div>
   <div id="bill_frequency_dropdown" class="field">
     <label>Frequency</label>
@@ -14,15 +22,15 @@
     </select>
   </div>
   <div class="field">
-    <label for="starting-date">Starting Date</label>
+    <label>Starting Date</label>
     <input type="date" class="form-control" id="starting-date" name="starting-date">
   </div>
   <div class="field">
-    <label for="ending-date">Ending Date</label>
+    <label>Ending Date</label>
     <input type="date" class="form-control" id="ending-date" name="ending-date">
   </div>
   <div class="field">
-    <label for="amount">Amount</label>
+    <label>Amount</label>
     <input type="text" class="form-control" id="amount" name="amount" aria-label="Dollar amount (with dot and two decimal places)" placeholder="TO-DO">
   </div>
   <div class="field">
@@ -33,8 +41,8 @@
     </div>
   </div>
   <div id="account_dropdown" class="field">
-    <label>Account</label>
-    <select class="ui dropdown" id="account_id" name="account_id">
+    <label>Account - <a href="/accounts/new">Add</a></label>
+    <select class="ui search dropdown" id="account_id" name="account_id">
       <% @accounts.each do |account| %>
         <option value="<%= account.id %>"><%= account.name %></option>
       <% end %>

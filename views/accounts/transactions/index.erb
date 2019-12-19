@@ -7,8 +7,8 @@
       <input type="date" id="date" name="date">
     </div>
     <div class="field">
-      <label>Merchant Name</label>
-      <select class="ui dropdown" id="merchant_id" name="merchant_id">
+      <label>Merchant - <a href="/merchants/new">Add</a></label>
+      <select class="ui search dropdown" id="merchant_id" name="merchant_id">
         <% @merchants.each do |merchant| %>
           <option value="<%= merchant.id %>"><%= merchant.name %></option>
         <% end %>
