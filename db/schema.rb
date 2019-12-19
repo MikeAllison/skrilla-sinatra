@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20191120174223) do
 
   create_table "merchants", force: :cascade do |t|
     t.string "name"
+    t.string "url_safe_name"
   end
 
   create_table "transactions", force: :cascade do |t|

@@ -1,26 +1,13 @@
-<h2 class="ui dividing header">Bill Details</h2>
+<h2 class="ui dividing header">Mark As Paid</h2>
 
 <form method="post" class="ui form">
   <div class="field">
-<<<<<<< HEAD
-    <label>Description</label>
-    <input type="text" class="form-control" id="description" name="description" value="<%= @bill.description %>">
-=======
     <label for="description">Description</label>
     <input type="text" id="description" name="description" class="form-control" value="<%= @bill.description %>">
   </div>
   <div id="merchant_dropdown" class="field">
     <label>Merchant</label>
     <select id="merchant_id" name="merchant_id" class="ui dropdown">
-      <% @merchants.each do |merchant| %>
-        <option value="<%= merchant.id %>"><%= merchant.name %></option>
-      <% end %>
-    </select>
->>>>>>> 7f4fd7fb35425e303dd99da624899f5cfd6befdf
-  </div>
-  <div class="field">
-    <label>Merchant - <a href="/merchants/new">Add</a></label>
-    <select class="ui search dropdown" id="merchant_id" name="merchant_id">
       <% @merchants.each do |merchant| %>
         <option value="<%= merchant.id %>"><%= merchant.name %></option>
       <% end %>
@@ -56,8 +43,8 @@
     </div>
   </div>
   <div id="account_dropdown" class="field">
-    <label>Account - <a href="/accounts/new">Add</a></label>
-    <select class="ui search dropdown" id="account_id" name="account_id">
+    <label>Account</label>
+    <select id="account_id" name="account_id" class="ui dropdown">
       <% @accounts.each do |account| %>
         <option value="<%= account.id %>"><%= account.name %></option>
       <% end %>
