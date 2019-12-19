@@ -1,9 +1,9 @@
 rerun -b -- rackup -p 8080 config.ru
 
+WORKING ON - Updating dropdowns to searchable fields
+
 TO-FIX:
 
 buttons on bills/index don't work
 
 add frontend validation to forms
-
-figure out how to handle merchants (link to merchants/new and then use a dropdown to select one)

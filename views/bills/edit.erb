@@ -2,10 +2,6 @@
 
 <form method="post" class="ui form">
   <div class="field">
-<<<<<<< HEAD
-    <label>Description</label>
-    <input type="text" class="form-control" id="description" name="description" value="<%= @bill.description %>">
-=======
     <label for="description">Description</label>
     <input type="text" id="description" name="description" class="form-control" value="<%= @bill.description %>">
   </div>
@@ -16,7 +12,6 @@
         <option value="<%= merchant.id %>"><%= merchant.name %></option>
       <% end %>
     </select>
->>>>>>> 7f4fd7fb35425e303dd99da624899f5cfd6befdf
   </div>
   <div class="field">
     <label>Merchant - <a href="/merchants/new">Add</a></label>
@@ -64,8 +59,8 @@
     </select>
   </div>
 
-  <button type="submit" class="ui button">Submit</button>
-  <a href="/bills" class="ui button">Cancel</a>
+  <button type="submit" class="ui green basic button">Save</button>
+  <a href="/bills" class="ui grey basic button">Cancel</a>
 </form>
 
 <script src="/js/bills/edit.js"></script>

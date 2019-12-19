@@ -10,6 +10,7 @@ get '/bills/new' do
   redirect to('/login') unless @logged_in_user
 
   @accounts = Account.all
+  @merchants = Merchant.all
 
   erb :'bills/new'
 end
