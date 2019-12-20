@@ -4,14 +4,17 @@
   <a href="/bills/new" class="ui green basic button">Add a Bill</a>
 </div>
 
-<table class="ui striped six column very compact table">
+<table class="ui striped nine column very compact table">
   <thead>
     <tr>
-      <th>Next Payment Date</th>
+      <th>Next Payment</th>
       <th>Description</th>
       <th>Merchant</th>
-      <th>Amount</th>
       <th>Frequency</th>
+      <th>Starting Date</th>
+      <th>Ending Date</th>
+      <th>Amount</th>
+      <th>Account</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,9 +23,19 @@
       <tr>
         <td>TO-DO</td>
         <td><%= bill.description %></td>
+        <td><%= bill.merchant.name %></td>
+        <td><%= bill.frequency.titleize.gsub(' ', '-') %></td>
+        <td><%= bill.starting_date.strftime('%m/%d/%Y') %></td>
         <td>TO-DO</td>
-        <td>TO-DO</td>
-        <td>TO-DO</td>
+        <td>
+          <% if bill.credit? %>
+            <span style="color:#21ba45;">$<%= to_currency(bill.amount) %></span>
+          <% else %>
+            <span style="color:#db2828;">$<%= to_currency(bill.amount) %></span>
+          <% end %>
+        </td>
+        <td><%= bill.account.name %></td>
+
         <td>
           <div class="ui vertical animated basic button" tabindex="-1" data-url="/bills/<%= bill.id %>/mark-as-paid">
             <div class="hidden content">Paid</div>

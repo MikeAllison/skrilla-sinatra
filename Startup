@@ -7,3 +7,7 @@ TO-FIX:
 buttons on bills/index don't work
 
 add frontend validation to forms
+
+TO-CHECK:
+
+data validations

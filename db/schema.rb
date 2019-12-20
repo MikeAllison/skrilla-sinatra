@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 20191120174223) do
     t.decimal "starting_balance", precision: 10, scale: 2, default: 0.0
   end
 
-  create_table "bill_frequencies", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "bills", force: :cascade do |t|
     t.string  "description"
-    t.integer "bill_frequency_id"
+    t.integer "merchant_id"
+    t.integer "frequency"
+    t.date    "starting_date"
+    t.decimal "amount",        precision: 10, scale: 2
+    t.boolean "credit"
+    t.integer "account_id"
   end
 
   create_table "merchants", force: :cascade do |t|
@@ -37,8 +38,8 @@ ActiveRecord::Schema.define(version: 20191120174223) do
     t.integer "merchant_id"
     t.date    "date"
     t.decimal "amount",      precision: 10, scale: 2
-    t.integer "account_id"
     t.boolean "credit"
+    t.integer "account_id"
   end
 
   create_table "users", force: :cascade do |t|
