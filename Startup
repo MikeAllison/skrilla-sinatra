@@ -6,8 +6,6 @@ TO-FIX:
 
 add frontend validation to forms
 
-bill/edit not populating data from record
-
 TO-CHECK:
 
 data validations
