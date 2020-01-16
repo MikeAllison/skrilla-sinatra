@@ -4,9 +4,9 @@ WORKING ON - Updating dropdowns to searchable fields
 
 TO-FIX:
 
-buttons on bills/index don't work
-
 add frontend validation to forms
+
+bill/edit not populating data from record
 
 TO-CHECK:
 

@@ -3,8 +3,9 @@ class CreateBills < ActiveRecord::Migration
     create_table :bills do |t|
       t.string :description
       t.integer :merchant_id
-      t.integer :frequency
+      t.string :frequency
       t.date :starting_date
+      t.date :ending_date
       t.decimal :amount, precision: 10, scale: 2
       t.boolean :credit
       t.integer :account_id

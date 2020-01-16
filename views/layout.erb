@@ -13,7 +13,7 @@
     <div class="ui container">
       <!-- Navbar -->
       <% if @logged_in_user %>
-        <div class="ui inverted pointing menu" style="margin-bottom:30px">
+        <div class="ui inverted menu" style="background: #198f35;margin-bottom:30px;">
           <div class="header item">Skrilla</div>
           <a href="/accounts" class="item <%= 'active' if request.path.match(/\A\/accounts/) %>">Accounts</a>
           <a href="/bills" class="item <%= 'active' if request.path.match(/\A\/bills/) %>">Bills</a>

@@ -2,7 +2,7 @@ class Bill < ActiveRecord::Base
   belongs_to :account
   belongs_to :merchant
 
-  enum frequency: { once: 0, daily: 1, weekly: 2, bi_weekly: 3, monthly: 4, yearly: 5}
+  enum frequency: { once: 'once', daily: 'daily', weekly: 'weekly', bi_weekly: 'bi_weekly', monthly: 'monthly', yearly: 'yearly'}
 
   validates_presence_of :description
   validates_presence_of :merchant_id

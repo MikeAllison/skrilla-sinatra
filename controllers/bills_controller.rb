@@ -22,7 +22,7 @@ end
 get '/bills/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
-  @bill = Bill.find_by(params[:id])
+  @bill = Bill.find_by(id: params[:id])
   @accounts = Account.all
   @merchants = Merchant.all
 
@@ -32,7 +32,7 @@ end
 get '/bills/:id/mark-as-paid' do
   redirect to('/login') unless @logged_in_user
 
-  @bill = Bill.find_by(params[:id])
+  @bill = Bill.find_by(id: params[:id])
   @accounts = Account.all
   @merchants = Merchant.all
 
