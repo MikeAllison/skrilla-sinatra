@@ -1,0 +1,43 @@
+<script src="/js/chart-js/chart.bundle.min.js"></script>
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+  // Get the current date
+  var timeNow = new Date();
+
+  var month = timeNow.getMonth() + 1;
+  month = (month < 10) ? ('0' + month) : month;
+
+  var day = timeNow.getDate();
+  day = (day < 10) ? ('0' + day) : day;
+
+  var date = month + '-' + day + '-' + timeNow.getFullYear();
+
+  // Set up the chart
+  var ctx = document.getElementById('myChart');
+
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: [date, 'CALCULATE'],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+</script>

@@ -12,4 +12,8 @@ class Bill < ActiveRecord::Base
   validates_numericality_of :amount
   validates_inclusion_of :credit, in: [true, false]
   validates_presence_of :account_id
+
+  def next_payment
+    starting_date + 1
+  end
 end

@@ -21,7 +21,7 @@
   <tbody>
     <% @bills.each do |bill| %>
       <tr>
-        <td>TO-DO</td>
+        <td><%= bill.next_payment.strftime('%m/%d/%Y') %></td>
         <td><%= bill.description %></td>
         <td><%= bill.merchant.name %></td>
         <td><%= bill.frequency.titleize.gsub(' ', '-') %></td>
