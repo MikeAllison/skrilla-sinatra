@@ -11,12 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191120174223) do
+ActiveRecord::Schema.define(version: 20200221171458) do
 
   create_table "accounts", force: :cascade do |t|
     t.string  "name"
     t.string  "url_safe_name"
     t.decimal "starting_balance", precision: 10, scale: 2, default: 0.0
+  end
+
+  create_table "bill_occurrences", force: :cascade do |t|
+    t.date    "posting_date"
+    t.decimal "amount",       precision: 10, scale: 2
+    t.boolean "credit"
   end
 
   create_table "bills", force: :cascade do |t|

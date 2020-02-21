@@ -19,6 +19,14 @@ post 'bills/new' do
   redirect to('/login') unless @logged_in_user
 end
 
+get '/bills/upcoming' do
+  redirect to('/login') unless @logged_in_user
+
+  @bill_occurrences = BillOccurrence.all
+
+  erb :'bills/upcoming'
+end
+
 get '/bills/:id/edit' do
   redirect to('/login') unless @logged_in_user
 
@@ -27,14 +35,4 @@ get '/bills/:id/edit' do
   @merchants = Merchant.all
 
   erb :'bills/edit'
-end
-
-get '/bills/:id/mark-as-paid' do
-  redirect to('/login') unless @logged_in_user
-
-  @bill = Bill.find_by(id: params[:id])
-  @accounts = Account.all
-  @merchants = Merchant.all
-
-  erb :'bills/mark-as-paid'
 end

@@ -1,0 +1,50 @@
+<h2>Bills</h2>
+
+<div class="ui segment">
+  <a href="/bills/new" class="ui green basic button">Add a Bill</a>
+</div>
+
+<table class="ui striped six column very compact table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Merchant</th>
+      <th>Amount</th>
+      <th>Account</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bill_occurrences.each do |bill_occurrence| %>
+      <tr>
+        <td><%= bill_occurrence.date.strftime('%m/%d/%Y') %></td>
+        <td><%= bill_occurrence.bill.description %></td>
+        <td><%= bill_occurrence.bill.merchant.name %></td>
+        <td>
+          <% if bill_occurrence.bill.credit? %>
+            <span style="color:#21ba45;">$<%= to_currency(bill_occurrence.bill.amount) %></span>
+          <% else %>
+            <span style="color:#db2828;">$<%= to_currency(bill_occurrence.bill.amount) %></span>
+          <% end %>
+        </td>
+        <td><%= bill_occurrence.bill.account.name %></td>
+
+        <td>
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurences/<%= bill_occurence.id %>/mark-as-paid">
+            <div class="hidden content">Paid</div>
+            <div class="visible content">
+              <i class="money bill alternate outline icon"></i>
+            </div>
+          </div>
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurences/<%= bill_occurence.id %>/edit">
+            <div class="hidden content">Edit</div>
+            <div class="visible content">
+              <i class="align edit icon"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

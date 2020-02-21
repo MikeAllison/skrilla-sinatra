@@ -1,4 +1,4 @@
-<h2 class="ui dividing header">Mark As Paid</h2>
+<h2 class="ui dividing header">Bill Details</h2>
 
 <form method="post" class="ui form">
   <div class="field">
@@ -32,8 +32,12 @@
     </div>
   </div>
   <div class="field">
-    <label for="payment-date">Payment Date</label>
-    TO-DO
+    <label for="starting-date">Starting Date</label>
+    <input type="date" id="starting-date" name="starting-date" class="form-control" value="<%= @bill.starting_date %>">
+  </div>
+  <div class="field">
+    <label for="ending-date">Ending Date</label>
+    <input type="date" id="ending-date" name="ending-date" class="form-control" value="<%= @bill.ending_date %>">
   </div>
   <div class="field">
     <label for="amount">Amount</label>
