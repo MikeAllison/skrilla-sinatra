@@ -16,7 +16,15 @@
         <div class="ui inverted menu" style="background: #198f35;margin-bottom:30px;">
           <div class="header item">Skrilla</div>
           <a href="/accounts" class="item <%= 'active' if request.path.match(/\A\/accounts/) %>">Accounts</a>
-          <a href="/bills" class="item <%= 'active' if request.path.match(/\A\/bills/) %>">Bills</a>
+          <div class="ui dropdown item">
+            Bills
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a href="/bills/upcoming" class="ui item">Upcoming</a>
+              <a href="/bills/new" class="ui item">New</a>
+              <a href="/bills" class="ui item">View All</a>
+            </div>
+          </div>
           <a href="/cash-flow" class="item <%= 'active' if request.path.match(/\A\/cash-flow/) %>">Cash Flow</a>
           <a href="/merchants" class="item <%= 'active' if request.path.match(/\A\/merchants/) %>">Merchants</a>
           <a href="/logout" class="item">Logout</a>
@@ -43,6 +51,11 @@
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/semantic/semantic.min.js"></script>
     <script src="/js/layout.js"></script>
+
+    <!-- Required JS for SemanticUI elements -->
+    <script type="text/javascript">
+      $('.ui.dropdown').dropdown();
+    </script>
 
     <!-- Launch Modal -->
     <% if session[:message] %>

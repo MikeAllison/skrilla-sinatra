@@ -4,6 +4,7 @@ class CreateBillOccurences < ActiveRecord::Migration
       t.date :date
       t.decimal :amount, precision: 10, scale: 2
       t.boolean :credit
+      t.integer :bill_id
     end
   end
 end

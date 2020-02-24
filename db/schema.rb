@@ -20,9 +20,10 @@ ActiveRecord::Schema.define(version: 20200221171458) do
   end
 
   create_table "bill_occurrences", force: :cascade do |t|
-    t.date    "posting_date"
-    t.decimal "amount",       precision: 10, scale: 2
+    t.date    "date"
+    t.decimal "amount",  precision: 10, scale: 2
     t.boolean "credit"
+    t.integer "bill_id"
   end
 
   create_table "bills", force: :cascade do |t|

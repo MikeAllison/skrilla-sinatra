@@ -18,7 +18,7 @@ class Bill < ActiveRecord::Base
 
   def create_bill_occurrences
     2.times do
-      BillOccurrence.create(posting_date: starting_date, amount: amount, credit: credit)
+      BillOccurrence.create(date: starting_date, amount: amount, credit: credit, bill_id: id)
     end
   end
 end

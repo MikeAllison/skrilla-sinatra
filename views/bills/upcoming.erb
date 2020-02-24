@@ -1,4 +1,4 @@
-<h2>Bills</h2>
+<h2>Upcoming Bills</h2>
 
 <div class="ui segment">
   <a href="/bills/new" class="ui green basic button">Add a Bill</a>
@@ -31,13 +31,13 @@
         <td><%= bill_occurrence.bill.account.name %></td>
 
         <td>
-          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurences/<%= bill_occurence.id %>/mark-as-paid">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurrences/<%= bill_occurrence.id %>/mark-as-paid">
             <div class="hidden content">Paid</div>
             <div class="visible content">
               <i class="money bill alternate outline icon"></i>
             </div>
           </div>
-          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurences/<%= bill_occurence.id %>/edit">
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/bill-occurrences/<%= bill_occurrence.id %>/edit">
             <div class="hidden content">Edit</div>
             <div class="visible content">
               <i class="align edit icon"></i>
