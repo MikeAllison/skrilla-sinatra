@@ -14,7 +14,7 @@ post '/login' do
 
     @logged_in_user = User.find_by_token(token)
 
-    redirect to('/accounts')
+    redirect to('/bills/upcoming')
   else
     session[:message] = { :heading => 'Login Failed', :body => 'The username or password did not match our records.' }
 
