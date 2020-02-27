@@ -4,12 +4,13 @@
   <a href="/bills/new" class="ui green basic button">Add a Bill</a>
 </div>
 
-<table class="ui striped six column very compact table">
+<table class="ui striped seven column very compact table">
   <thead>
     <tr>
       <th>Date</th>
       <th>Description</th>
       <th>Merchant</th>
+      <th>Category</th>
       <th>Amount</th>
       <th>Account</th>
       <th>Actions</th>
@@ -21,6 +22,7 @@
         <td><%= bill_occurrence.date.strftime('%m/%d/%Y') %></td>
         <td><%= bill_occurrence.bill.description %></td>
         <td><%= bill_occurrence.bill.merchant.name %></td>
+        <td><%= bill_occurrence.bill.category.name %></td>
         <td>
           <% if bill_occurrence.bill.credit? %>
             <span style="color:#21ba45;">$<%= to_currency(bill_occurrence.bill.amount) %></span>

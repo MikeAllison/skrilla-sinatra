@@ -29,7 +29,7 @@
       <i class="dropdown icon"></i>
       <div class="default text"><%= @bill_occurence.bill.account.name %></div>
       <div class="menu">
-        <% @accounts.order(:name).each do |account| %>
+        <% @accounts.each do |account| %>
           <div class="item" data-value="<%= account.id %>"><%= account.name %></div>
         <% end %>
       </div>

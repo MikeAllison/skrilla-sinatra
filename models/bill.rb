@@ -1,5 +1,6 @@
 class Bill < ActiveRecord::Base
   belongs_to :account
+  belongs_to :category
   belongs_to :merchant
   has_many :bill_occurrences
 

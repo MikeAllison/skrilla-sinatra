@@ -6,6 +6,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.decimal :amount, precision: 10, scale: 2
       t.boolean :credit
       t.integer :account_id
+      t.integer :category_id
     end
   end
 end

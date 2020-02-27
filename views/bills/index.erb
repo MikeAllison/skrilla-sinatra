@@ -9,6 +9,7 @@
     <tr>
       <th>Description</th>
       <th>Merchant</th>
+      <th>Category</th>
       <th>Frequency</th>
       <th>Starting Date</th>
       <th>Ending Date</th>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= bill.description %></td>
         <td><%= bill.merchant.name %></td>
+        <td><%= bill.category.name %></td>
         <td><%= bill.frequency.titleize.gsub(' ', '-') %></td>
         <td><%= bill.starting_date.strftime('%m/%d/%Y') %></td>
         <td>TO-DO</td>

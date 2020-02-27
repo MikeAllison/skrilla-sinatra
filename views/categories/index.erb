@@ -1,0 +1,40 @@
+<h2>Categories</h2>
+
+<div class="ui segment">
+  <form method="post" class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <button type="submit" class="ui green basic button">Add Category</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<table class="ui striped two column very compact table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <div class="ui vertical animated basic button" tabindex="-1" data-url="/categories/<%= category.url_safe_name %>/edit">
+            <div class="hidden content">Edit</div>
+            <div class="visible content">
+              <i class="align edit icon"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

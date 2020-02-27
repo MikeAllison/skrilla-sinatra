@@ -1,7 +1,7 @@
 get '/accounts' do
   authenticated?
 
-  @accounts = Account.all
+  @accounts = Account.order(name: :asc)
 
   if @accounts.empty?
     session[:message] = { :heading => 'Welcome', :body => 'No accounts could be found.  Please add an account.' }
@@ -28,7 +28,8 @@ end
 get '/accounts/:url_safe_name/transactions' do
   authenticated?
 
-  @merchants = Merchant.all
+  @categories = Category.order(name: :asc)
+  @merchants = Merchant.order(name: :asc)
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
   @transactions = Transaction.where(account_id: @account.id).order(date: :desc)
 
@@ -62,8 +63,8 @@ get '/accounts/:url_safe_name/transactions/:id/edit' do
     redirect to("/accounts/#{params[:url_safe_name]}/transactions")
   end
 
-  @merchants = Merchant.all
-  @accounts = Account.all
+  @merchants = Merchant.order(name: :asc)
+  @accounts = Account.order(name: :asc)
 
   erb :'accounts/transactions/edit'
 end

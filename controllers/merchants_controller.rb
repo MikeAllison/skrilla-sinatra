@@ -21,7 +21,7 @@ post '/merchants' do
     redirect to("/merchants")
   else
     session[:message] = { :heading => 'Error', :body => 'There was a problem adding the merchant.  Please try again.' }
-    redirect to('/merchants/new')
+    redirect to('/merchants')
   end
 end
 
@@ -35,7 +35,7 @@ end
 
 post '/merchants/:url_safe_name/edit' do
   authenticated?
-  
+
   merchant = Merchant.find_by(url_safe_name: params[:url_safe_name])
 
   if merchant.update(name: params[:name])

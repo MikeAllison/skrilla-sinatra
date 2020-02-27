@@ -3,7 +3,7 @@
 
 <div class="ui segment">
   <form method="post" class="ui form">
-    <div class="four fields">
+    <div class="five fields">
       <div class="field">
         <label>Date</label>
         <input type="date" id="date" name="date">
@@ -24,6 +24,21 @@
         </div>
       </div>
       <div class="field">
+        <label>Category</label>
+        <div class="ui fluid search selection dropdown">
+          <input type="hidden" id="category_id" name="category_id">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Category</div>
+          <div class="menu">
+            <div class="item"><a href="/categories">Add a Category</a></div>
+            <div class="divider"></div>
+            <% @categories.each do |category| %>
+              <div class="item" data-value="<%= category.id %>"><%= category.name %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="field">
         <label>Amount</label>
         <input type="text" id="amount" name="amount" placeholder="0.00">
       </div>
@@ -39,11 +54,12 @@
   </form>
 </div>
 
-<table class="ui striped four column very compact table">
+<table class="ui striped five column very compact table">
   <thead>
     <tr>
       <th>Date</th>
       <th>Merchant</th>
+      <th>Category</th>
       <th>Amount</th>
       <th>Actions</th>
     </tr>
@@ -53,6 +69,7 @@
       <tr>
         <td><%= transaction.date.strftime('%m/%d/%Y') %></td>
         <td><%= transaction.merchant.name %></td>
+        <td><%= transaction.category.name %></td>
         <td>
           <% if transaction.credit? %>
             <span style="color:#21ba45;">$<%= to_currency(transaction.amount) %></span>

@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
   has_many :transactions
 
   validates_presence_of :name
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { case_sensitive: false }
   validates_presence_of :starting_balance
 
   before_save do

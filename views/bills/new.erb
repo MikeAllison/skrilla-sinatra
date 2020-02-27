@@ -20,6 +20,21 @@
       </div>
     </div>
   </div>
+  <div class="field">
+    <label>Category</label>
+    <div class="ui fluid search selection dropdown">
+      <input type="hidden" id="category_id" name="category_id">
+      <i class="dropdown icon"></i>
+      <div class="default text">Select Category</div>
+      <div class="menu">
+        <div class="item"><a href="/categories">Add a Category</a></div>
+        <div class="divider"></div>
+        <% @categories.each do |category| %>
+          <div class="item" data-value="<%= category.id %>"><%= category.name %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div id="bill_frequency_dropdown" class="field">
     <label>Frequency</label>
     <select id="bill_frequency" name="bill_frequency" class="ui dropdown">

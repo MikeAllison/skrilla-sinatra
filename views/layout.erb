@@ -25,7 +25,14 @@
             </div>
           </div>
           <a href="/cash-flow" class="item <%= 'active' if request.path.match(/\A\/cash-flow/) %>">Cash Flow</a>
-          <a href="/merchants" class="item <%= 'active' if request.path.match(/\A\/merchants/) %>">Merchants</a>
+          <div class="ui dropdown item">
+            Setup
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a href="/categories" class="ui item">Categories</a>
+              <a href="/merchants" class="ui item">Merchants</a>
+            </div>
+          </div>
           <a href="/logout" class="item">Logout</a>
         </div>
       <!-- Navbar End-->

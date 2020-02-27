@@ -1,7 +1,7 @@
 get '/bills' do
   authenticated?
 
-  @bills = Bill.all
+  @bills = Bill.order(description: :asc)
 
   erb :'bills/index'
 end
@@ -9,8 +9,9 @@ end
 get '/bills/new' do
   authenticated?
 
-  @accounts = Account.all
-  @merchants = Merchant.all
+  @accounts = Account.order(name: :asc)
+  @categories = Category.order(name: :asc)
+  @merchants = Merchant.order(name: :asc)
 
   erb :'bills/new'
 end
@@ -41,8 +42,9 @@ get '/bills/:id/edit' do
   authenticated?
 
   @bill = Bill.find_by(id: params[:id])
-  @accounts = Account.all
-  @merchants = Merchant.all
+  @accounts = Account.order(name: :asc)
+  @categories = Category.order(name: :asc)
+  @merchants = Merchant.order(name: :asc)
 
   erb :'bills/edit'
 end

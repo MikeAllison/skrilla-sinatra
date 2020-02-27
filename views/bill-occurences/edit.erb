@@ -12,7 +12,7 @@
       <i class="dropdown icon"></i>
       <div class="default text"><%= @bill.merchant.name %></div>
       <div class="menu">
-        <% @merchants.order(:name).each do |merchant| %>
+        <% @merchants.each do |merchant| %>
           <div class="item" data-value="<%= merchant.id %>"><%= merchant.name %></div>
         <% end %>
       </div>
@@ -57,7 +57,7 @@
       <i class="dropdown icon"></i>
       <div class="default text"><%= @bill.account.name %></div>
       <div class="menu">
-        <% @accounts.order(:name).each do |account| %>
+        <% @accounts.each do |account| %>
           <div class="item" data-value="<%= account.id %>"><%= account.name %></div>
         <% end %>
       </div>

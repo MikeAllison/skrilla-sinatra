@@ -1,4 +1,4 @@
-class Merchant < ActiveRecord::Base
+class Category < ActiveRecord::Base
   has_many :bills
   has_many :transactions
 

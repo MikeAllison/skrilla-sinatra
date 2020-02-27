@@ -4,11 +4,13 @@ rerun -b -- rackup -p 8080 config.ru
 
 http://sinatrarb.com/contrib/reloader
 
-WORKING ON - Updating dropdowns to searchable fields
+WORKING ON:
+Adding Category
+Updating dropdowns to searchable fields
+
 
 TO-FIX:
 
-post bills/new doesn't work
 bill-occurences edit & mark-as-paid
 move chart js to separate file
 add frontend validation to forms
