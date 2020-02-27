@@ -1,5 +1,5 @@
 get '/merchants' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @merchants = Merchant.order(name: :asc)
 
@@ -12,7 +12,7 @@ get '/merchants' do
 end
 
 post '/merchants' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   merchant = Merchant.new(name: params[:name])
 
@@ -26,7 +26,7 @@ post '/merchants' do
 end
 
 get '/merchants/:url_safe_name/edit' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @merchant = Merchant.find_by(url_safe_name: params[:url_safe_name])
 
@@ -34,7 +34,7 @@ get '/merchants/:url_safe_name/edit' do
 end
 
 post '/merchants/:url_safe_name/edit' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
   
   merchant = Merchant.find_by(url_safe_name: params[:url_safe_name])
 

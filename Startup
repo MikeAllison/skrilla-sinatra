@@ -1,3 +1,5 @@
+rackup -p 8080 config.ru
+
 rerun -b -- rackup -p 8080 config.ru
 
 http://sinatrarb.com/contrib/reloader
@@ -10,6 +12,9 @@ post bills/new doesn't work
 bill-occurences edit & mark-as-paid
 move chart js to separate file
 add frontend validation to forms
+enable auth
+only show menu to authed users
+fix app.rb not_found
 
 TO-CHECK:
 

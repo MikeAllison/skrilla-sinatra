@@ -1,5 +1,5 @@
 get '/cash-flow' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   erb :'cash-flow/index'
 end

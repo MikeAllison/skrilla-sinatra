@@ -12,7 +12,6 @@
   <body>
     <div class="ui container">
       <!-- Navbar -->
-      <% if @logged_in_user %>
         <div class="ui inverted menu" style="background: #198f35;margin-bottom:30px;">
           <div class="header item">Skrilla</div>
           <a href="/accounts" class="item <%= 'active' if request.path.match(/\A\/accounts/) %>">Accounts</a>
@@ -29,7 +28,7 @@
           <a href="/merchants" class="item <%= 'active' if request.path.match(/\A\/merchants/) %>">Merchants</a>
           <a href="/logout" class="item">Logout</a>
         </div>
-      <% end %> <!-- Navbar End-->
+      <!-- Navbar End-->
 
       <%= yield %>
 

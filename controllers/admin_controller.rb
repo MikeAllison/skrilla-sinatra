@@ -1,5 +1,5 @@
 get '/admin/settings' do
-  redirect to ('/login') unless @logged_in_user
+  authenticated?
 
   @accounts = Account.all
   @users = User.all

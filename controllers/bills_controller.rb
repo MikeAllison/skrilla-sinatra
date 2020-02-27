@@ -1,5 +1,5 @@
 get '/bills' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @bills = Bill.all
 
@@ -7,7 +7,7 @@ get '/bills' do
 end
 
 get '/bills/new' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @accounts = Account.all
   @merchants = Merchant.all
@@ -15,9 +15,9 @@ get '/bills/new' do
   erb :'bills/new'
 end
 
-post 'bills/new' do
-  redirect to('/login') unless @logged_in_user
-
+post '/bills/new' do
+  authenticated?
+  binding.pry
   bill = Bill.new(description: "Beer", merchant_id: 2, frequency: 'bi_weekly', starting_date: '2019-02-26', amount: 1000.00, credit: false, account_id: 1)
 
   if bill.save
@@ -30,7 +30,7 @@ post 'bills/new' do
 end
 
 get '/bills/upcoming' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @bill_occurrences = BillOccurrence.all
 
@@ -38,7 +38,7 @@ get '/bills/upcoming' do
 end
 
 get '/bills/:id/edit' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @bill = Bill.find_by(id: params[:id])
   @accounts = Account.all

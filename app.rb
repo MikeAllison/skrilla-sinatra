@@ -27,6 +27,7 @@ get '/' do
   redirect to('/login')
 end
 
+### CHANGE!!! ###
 not_found do
-  redirect to('/')
+  #redirect to('/')
 end

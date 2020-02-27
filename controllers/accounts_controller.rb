@@ -1,5 +1,5 @@
 get '/accounts' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @accounts = Account.all
 
@@ -11,8 +11,8 @@ get '/accounts' do
 end
 
 post '/accounts' do
-  redirect to('/login') unless @logged_in_user
-  
+  authenticated?
+
   account = Account.new(name: params[:name], starting_balance: params[:starting_balance])
 
   if account.save
@@ -26,7 +26,7 @@ post '/accounts' do
 end
 
 get '/accounts/:url_safe_name/transactions' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @merchants = Merchant.all
   @account = Account.find_by(url_safe_name: params[:url_safe_name])
@@ -36,7 +36,7 @@ get '/accounts/:url_safe_name/transactions' do
 end
 
 post '/accounts/:url_safe_name/transactions' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   account = Account.find_by(url_safe_name: params[:url_safe_name])
   credit = params[:credit] == "on" ? true : false
@@ -53,7 +53,7 @@ post '/accounts/:url_safe_name/transactions' do
 end
 
 get '/accounts/:url_safe_name/transactions/:id/edit' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @transaction = Transaction.find_by(id: params[:id])
 
@@ -69,7 +69,7 @@ get '/accounts/:url_safe_name/transactions/:id/edit' do
 end
 
 post '/accounts/:url_safe_name/transactions/:id/edit' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   strip_whitespace(params)
 
@@ -91,7 +91,7 @@ post '/accounts/:url_safe_name/transactions/:id/edit' do
 end
 
 get '/accounts/:url_safe_name/transactions/:id/delete' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   transaction = Transaction.find_by(id: params[:id])
 

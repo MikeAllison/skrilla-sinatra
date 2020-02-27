@@ -1,5 +1,5 @@
 get '/bill-occurences/:id/mark-as-paid' do
-  redirect to('/login') unless @logged_in_user
+  authenticated?
 
   @bill_occurence = BillOccurrence.find_by(id: params[:id])
   @accounts = Account.all
