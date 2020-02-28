@@ -1,0 +1,39 @@
+<h2 class="ui dividing header">Bill Occurrence Details</h2>
+
+<form method="post" class="ui form">
+  <p style="font-size:.92857143em;"><strong>Description</strong> - <%= @bill_occurrence.bill.description %></p>
+  <p style="font-size:.92857143em;"><strong>Merchant</strong> - <%= @bill_occurrence.bill.merchant.name %></p>
+  <p style="font-size:.92857143em;"><strong>Category</strong> - <%= @bill_occurrence.bill.category.name %></p>
+  <p style="font-size:.92857143em;"><strong>Frequency</strong> - <%= @bill_occurrence.bill.frequency.titleize.gsub(' ', '-') %></p>
+  <p style="font-size:.92857143em;"><strong>Account</strong> - <%= @bill_occurrence.bill.account.name %></p>
+
+  <div class="field">
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date" class="form-control" value="<%= @bill_occurrence.date %>">
+  </div>
+  <div class="field">
+    <label for="amount">Amount</label>
+    <input type="text" id="amount" name="amount" class="form-control" placeholder="<%= to_currency(@bill_occurrence.amount) %>">
+  </div>
+  <div class="field">
+    <label style="margin-bottom:14px;">Credit?</label>
+    <div class="ui slider checkbox">
+      <input type="checkbox" id="credit" name="credit" tabindex="0" class="hidden">
+      <label for="credit"></label>
+    </div>
+  </div>
+
+  <button type="submit" class="ui green basic button">Save</button>
+  <a href="/bills" class="ui grey basic button">Cancel</a>
+</form>
+
+<script src="/js/bills/edit.js"></script>
+<script>
+  $(function() {
+    $('.ui.dropdown').dropdown();
+
+    if (<%= @bill_occurrence.credit? %> === true) {
+      $('#credit').attr('checked', 'checked');
+    }
+  });
+</script>

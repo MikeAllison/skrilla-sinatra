@@ -11,7 +11,7 @@ Updating dropdowns to searchable fields
 
 TO-FIX:
 
-bill-occurences edit & mark-as-paid
+bill-occurrences edit & mark-as-paid
 move chart js to separate file
 add frontend validation to forms
 enable auth

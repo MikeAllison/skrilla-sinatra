@@ -1,4 +1,4 @@
-class CreateBillOccurences < ActiveRecord::Migration
+class CreateBillOccurrences < ActiveRecord::Migration
   def change
     create_table :bill_occurrences do |t|
       t.date :date
