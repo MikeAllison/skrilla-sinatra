@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 group :development, :production do
   gem 'sinatra'
   gem 'sinatra-contrib'
-  gem 'activerecord', '4.2.10'
+  gem 'activerecord', '6.1.7.1'
   gem 'sinatra-activerecord'
   gem 'bcrypt'
   gem 'rake'
